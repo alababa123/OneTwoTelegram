@@ -45,6 +45,9 @@ function App() {
     tele.MainButton.show();
   };
 
+  Telegram.WebApp.onEvent('mainButtonClicked', function(){
+    tg.sendData("some string that we need to send"); 
+  });
   return (
     <>
       <h1 className="heading">Заказ кроссовок</h1>
