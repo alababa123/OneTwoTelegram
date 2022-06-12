@@ -6,9 +6,9 @@ const { getData } = require("./db/db");
 const foods = getData();
 
 const tele = window.Telegram.WebApp;
-
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [display_invoice, invoice_state] = useState(false);
 
   useEffect(() => {
     tele.ready();
@@ -39,33 +39,58 @@ function App() {
       );
     }
   };
-
+  const Payment = () => {
+    tele.sendData(JSON.stringify(cartItems));
+  }
   const onCheckout = () => {
+    invoice_state(true)
     console.log(JSON.stringify(cartItems));
     // tele.sendData(JSON.stringify(cartItems));
-    tele.MainButton.text = "Оформить заказ";
+    tele.MainButton.text = 'Закрыть корзину';
     tele.MainButton.show();
+    
   };
 
   window.Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tele.MainButton.hide();
-    tele.sendData(JSON.stringify(cartItems.length)); 
-    //при клике на основную кнопку отправляем данные в строковом виде
+    if (tele.MainButton.text = 'Закрыть корзину'){
+      invoice_state(false)
+      tele.MainButton.text = 'Открыть корзину';
+      tele.MainButton.hide();
+    }
+
   });
-  
-  return (
-    <>
-      <h1 className="heading">Заказ кроссовок</h1>
-      <Cart cartItems={cartItems} onCheckout={onCheckout}/>
-      <div className="cards__container">
-        {foods.map((food) => {
-          return (
-            <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
-          );
-        })}
-      </div>
-    </>
-  );
+  if (display_invoice === false){
+    return (
+      <>
+        <h1 className="heading">Заказ кроссовок</h1>
+        <Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false}/>
+        <div className="cards__container">
+          {foods.map((food) => {
+            return (
+              <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
+            );
+          })}
+        </div>
+      </>
+    );
+  }
+  else{
+    return (
+      <>
+        <h1 className="heading">Корзина покупки</h1>
+        <Cart cartItems={cartItems} onCheckout={Payment} isPayment={true}/>
+        <div className="cards__container">
+          {cartItems.map((food) => {
+            return (
+              <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
+            );
+          })}
+        </div>
+      </>
+    );
+  }
+
+
 }
 
 export default App;
