@@ -41,13 +41,18 @@ function App() {
   };
 
   const onCheckout = () => {
+    console.log(JSON.stringify(cartItems));
+    // tele.sendData(JSON.stringify(cartItems));
     tele.MainButton.text = "Оформить заказ";
     tele.MainButton.show();
   };
 
   window.Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tele.sendData("some string that we need to send"); 
+    tele.MainButton.hide();
+    tele.sendData(JSON.stringify(cartItems.length)); 
+    //при клике на основную кнопку отправляем данные в строковом виде
   });
+  
   return (
     <>
       <h1 className="heading">Заказ кроссовок</h1>
