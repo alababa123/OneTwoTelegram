@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import "./Card.css";
+import "../Card/Card.css";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function Card({ food, onAdd, onRemove }) {
+function CardDetail({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
-  const { title, Image, price, id } = food;
-
+  const cur_id = useParams();
+  console.log(food);
+  const { title, Image, price, id } = food[cur_id.id];
+  
   const handleIncrement = () => {
     setCount(count + 1);
-    onAdd(food);
+    onAdd(food[cur_id.id]);
   };
+  
   const handleDecrement = () => {
     setCount(count - 1);
-    onRemove(food);
+    onRemove(food[cur_id.id]);
   };
 
   return (
@@ -32,7 +36,7 @@ function Card({ food, onAdd, onRemove }) {
       </h4>
       </Link>
       <div className="btn-container">
-        <Button title={"+"} type={"add"} onClick={handleIncrement} />
+        <Button title={"Добавить в корзину"} type={"add"} onClick={handleIncrement} />
         {count !== 0 ? (
           <Button title={"-"} type={"remove"} onClick={handleDecrement} />
         ) : (
@@ -43,4 +47,4 @@ function Card({ food, onAdd, onRemove }) {
   );
 }
 
-export default Card;
+export default CardDetail;

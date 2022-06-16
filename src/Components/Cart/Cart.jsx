@@ -1,7 +1,8 @@
 import React from "react";
 import "./Cart.css";
 import Button from "../Button/Button";
-function Cart({ cartItems, onCheckout, isPayment }) {
+function Basket({ cartItems, onCheckout, isPayment }) {
+
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   if (!isPayment){
     return (
@@ -31,4 +32,4 @@ function Cart({ cartItems, onCheckout, isPayment }) {
   }
 }
 
-export default Cart;
+export default Basket;

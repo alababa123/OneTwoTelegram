@@ -2,10 +2,17 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
+import { BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router";
+import CardDetail from "./Components/CardDetail/CardDetail";
+import Store from './Components/Store/Stope'
+
 const { getData } = require("./db/db");
 const foods = getData();
 
+
 const tele = window.Telegram.WebApp;
+// console.log(foods)
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [display_invoice, invoice_state] = useState(false);
@@ -39,12 +46,12 @@ function App() {
       );
     }
   };
+  
   const Payment = () => {
     tele.sendData(JSON.stringify(cartItems));
   }
   const onCheckout = () => {
     invoice_state(true)
-    console.log(JSON.stringify(cartItems));
     // tele.sendData(JSON.stringify(cartItems));
     tele.MainButton.text = 'Закрыть корзину';
     tele.MainButton.show();
@@ -58,39 +65,19 @@ function App() {
       tele.MainButton.hide();
     }
 
-  });
-  if (display_invoice === false){
-    return (
-      <>
-        <h1 className="heading">Заказ кроссовок</h1>
-        <Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false}/>
-        <div className="cards__container">
-          {foods.map((food) => {
-            return (
-              <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
-            );
-          })}
-        </div>
-      </>
-    );
-  }
-  else{
-    return (
-      <>
-        <h1 className="heading">Корзина покупки</h1>
-        <Cart cartItems={cartItems} onCheckout={Payment} isPayment={true}/>
-        <div className="cards__container">
-          {cartItems.map((food) => {
-            return (
-              <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
-            );
-          })}
-        </div>
-      </>
-    );
-  }
-
-
+});
+  return (
+    <>
+    <BrowserRouter>
+      <h1 className="heading">Заказ кроссовок</h1>
+      <Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false}/>
+      <Routes>
+        <Route path="/" element={<Store food={foods} onAdd={onAdd} onRemove={onRemove}/>}/>
+        <Route path="/store/:id" element={<CardDetail food={foods} onAdd={onAdd} onRemove={onRemove}/>} />
+      </Routes>
+    </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
