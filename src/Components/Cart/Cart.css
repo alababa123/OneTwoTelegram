@@ -5,3 +5,14 @@
   margin-top: 12px;
   margin: 5px 15px;
 }
+
+.shopping-cartBr {
+  width: 750px;
+  height: 423px;
+  margin: 80px auto;
+  background: #FFFFFF;
+  /* box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10); */
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
