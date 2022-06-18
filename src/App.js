@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
 import CardDetail from "./Components/CardDetail/CardDetail";
 import Store from './Components/Store/Stope'
+import Header from "./Components/Header/Header";
 
 const { getData } = require("./db/db");
 const foods = getData();
@@ -16,6 +16,7 @@ const tele = window.Telegram.WebApp;
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [display_invoice, invoice_state] = useState(false);
+  const [cartCount, setcartCount] = useState(0)
 
   useEffect(() => {
     tele.ready();
@@ -32,6 +33,8 @@ function App() {
     } else {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
+    setcartCount(cartCount + 1)
+    console.log(cartItems)
   };
 
   const onRemove = (food) => {
@@ -45,6 +48,8 @@ function App() {
         )
       );
     }
+    setcartCount(cartCount - 1)
+    console.log(cartCount)
   };
   
   const Payment = () => {
@@ -70,10 +75,11 @@ function App() {
     <>
     <BrowserRouter>
       <h1 className="heading">Заказ кроссовок</h1>
-      <Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false}/>
+      <Header cartItems={cartItems} onCheckout={onCheckout} isPayment={false} count={cartCount}/>
       <Routes>
-        <Route path="/" element={<Store food={foods} onAdd={onAdd} onRemove={onRemove}/>}/>
-        <Route path="/store/:id" element={<CardDetail food={foods} onAdd={onAdd} onRemove={onRemove}/>} />
+        <Route path="/" element={<Store food={foods} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
+        <Route path="/store/:id" element={<CardDetail food={foods} onAdd={onAdd} onRemove={onRemove}/>}/>
+        <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false}/>}/>
       </Routes>
     </BrowserRouter>
     </>
