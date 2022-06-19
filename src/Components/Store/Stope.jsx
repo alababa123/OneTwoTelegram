@@ -45,7 +45,6 @@ function Store({ food, onAdd, onRemove, cartItems }) {
 
     return (
         <>
-            <h1 className="heading">Заказ кроссовок </h1>
             <div className="cards__container">
                 {food.map((food) => {
                     return (

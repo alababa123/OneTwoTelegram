@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "./CardDetail.css"
 
+
+function selectSize(size) {
+  console.log('я работаю')
+  console.log(size)
+}
+
 function CardDetail({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
   const cur_id = useParams();
-  console.log(food);
-  const { title, Image, price, id } = food[cur_id.id];
+  const { title, Image, price, id, sizes } = food[cur_id.id];
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -21,26 +26,29 @@ function CardDetail({ food, onAdd, onRemove }) {
   };
 
   return (
+    <>
     <div className="cardDetail">
       <div class="column">
         <div className="image__containerDitail">
-      <img src={Image} alt={title} />
+          <img src={Image} alt={title} />
+        </div>
       </div>
-      </div>
-      <div class="column">
+      <div className="column">
         <h2>{title} </h2>
         <p><span className="card__discription">{"Здесь будет описание"}</span></p>
-        <p><div className="btn-containerDetail">
-        <Button title={"+"} type={"add"} onClick={handleIncrement} />
-        {count !== 0 ? (
-          <Button title={"-"} type={"remove"} onClick={handleDecrement} />
-        ) : (
-          ""
-        )}
-      </div></p>
+        <p><div className="sizes-btn-container">
+          {sizes.map((size) => { return (<Button title={size}  onClick={console.log('я работаю') } />) })}
+        </div></p>
+        <p>
+          <button className="btn-add" onClick={handleIncrement}>Добавить в корзину</button>
+          {count !== 0 ? (
+            <Button title={"-"} type={"remove"} onClick={handleDecrement} />
+          ) : (
+            ""
+          )}</p>
       </div>
     </div>
-
+    </>
   );
 }
 

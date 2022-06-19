@@ -3,38 +3,49 @@ import "./CardInBracket.css";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
-function CardInBracket({ food }) {
+function CardInBracket({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
-  const { title, Image, price, id } = food;
+  const { title, Image, price, id, quantity } = food;
 
+  const handleIncrement = () => {
+    setCount(count + 1);
+    onAdd(food);
+  };
+  const handleDecrement = () => {
+    setCount(count - 1);
+    onRemove(food);
+  };
 
   return ( 
-      <div className="itemBr">
-        <div className="buttonsBr">
-          <span className="delete-btnBr"> x </span>
-          <span className="like-btnBr"></span>
-        </div>
- 
-        <div className="imageBr">
-          <img src={Image} alt="" style={{width: "50px", height: "50px"}}/>
-        </div>
- 
-        <div className="descriptionBr">
-          <span>{title}</span>
-        </div>
- 
-        <div className="quantityBr">
-          <button className="plus-btnBr" type="buttonBr" name="buttonBr">
-            +
-          </button>
-          <input type="textBr" name="nameBr" value="1"/>
-          <button className="minus-btnBr" type="buttonBr" name="buttonBr">
-            -
-          </button>
-        </div>
- 
-        <div className="total-priceBr">{price}Р</div>
+    <>
+
+    <div class="item">
+      <div class="buttons">
+        <span class="delete-btn"></span>
+        <span class="like-btn"></span>
       </div>
+   
+      <div class="image">
+        <img src={Image} alt="" />
+      </div>
+   
+      <div class="description">
+        <span>{title}</span>
+        <span>Кол-во: {quantity}</span>
+      </div>
+   
+      <div class="quantity">
+        <button class="plus-btn" type="button" name="button" onClick={handleIncrement}>
+          +
+        </button>
+        <button class="minus-btn" type="button" name="button" onClick={handleDecrement}>
+          -
+        </button>
+      </div>
+   
+      <div class="total-price">{price * quantity}₽</div>
+    </div>
+  </>
   );
 }
 

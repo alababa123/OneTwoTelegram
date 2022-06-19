@@ -74,12 +74,11 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      <h1 className="heading">Заказ кроссовок</h1>
       <Header cartItems={cartItems} onCheckout={onCheckout} isPayment={false} count={cartCount}/>
       <Routes>
         <Route path="/" element={<Store food={foods} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
         <Route path="/store/:id" element={<CardDetail food={foods} onAdd={onAdd} onRemove={onRemove}/>}/>
-        <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false}/>}/>
+        <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false} onAdd={onAdd} onRemove={onRemove}/>}/>
       </Routes>
     </BrowserRouter>
     </>

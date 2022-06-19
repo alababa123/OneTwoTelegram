@@ -16,30 +16,20 @@ function Card({ countInBracket, food, onAdd, onRemove }) {
     onRemove(food);
   };
 
-  return ( 
+  return (
+    <Link to={`/store/${id}`} style={{ textDecoration: 'none' }}>  
       <div className="card">
-        <Link to={`/store/${id}`} style={{ textDecoration: 'none' }}> 
-          <span
-            className={`${count != 0 ? "card__badge" : "card__badge--hidden"}`}
-          >
-            {count}
-          </span>
+          <span className="card__price">&nbsp;₽ {price}&nbsp;</span>
           <div className="image__container">
-            <img src={Image} alt={title} />
+            <img src={Image} alt={title}>
+            </img>
           </div>
           <h4 className="card__title">
-            {title} <br/>Цена: <span className="card__price">₽{price}</span>
+            {title}
+            <br/>
           </h4>
-        </Link> 
-        <div className="btn-container">
-          <Button title={"+"} type={"add"} onClick={handleIncrement} />
-          {count !== 0 ? (
-            <Button title={"-"} type={"remove"} onClick={handleDecrement} />
-          ) : (
-            ""
-          )}
-        </div>
       </div> 
+      </Link> 
   );
 }
 

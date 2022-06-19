@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #000;
+  --primary-color: rgb(220, 220, 220);
 }
 
 .card {
@@ -7,26 +7,34 @@
   flex-direction: column;
   justify-content: space-between;
   width: 150px;
-  height: 250px;
+  height: 200px;
   border: 2px solid var(--primary-color);
-  padding: 0.5rem 0.3rem;
-  margin: 13px 10px;
+  /* padding: 0.5rem 0.3rem; */
+  margin: 10px 1px;
   position: relative;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .card__title {
+  text-decoration: none;
+  color: black;
   font-weight: 400;
   text-align: center;
 }
 
-.card__title .card__price {
-  font-weight: bold;
+.card__price {
+  color:black;
+  font-size: 10px;
+  position: absolute;
+  top: 115px;
+  background-color: white;
+  /* width: 100%; */
 }
 
 .image__container {
-  width: 100px;
-  height: 100px;
+  background-color: rgb(183, 183, 183);
+  width: auto;
+  height: 130px;
   margin: 0 auto;
 }
 

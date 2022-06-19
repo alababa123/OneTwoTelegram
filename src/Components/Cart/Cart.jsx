@@ -5,47 +5,31 @@ import { Link } from "react-router-dom";
 import CardInBracket from "../CardInBracket/CardInBracket";
  
 
-function Basket({ cartItems, onCheckout, isPayment }) {
+function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove }) {
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
-  if (!isPayment){
-    return (
+  console.log()  
+  return (
       <>
-        <div className="cart__container">
-          {cartItems.length === 0 ? "В корзине пусто " : "Сумма заказа: ₽" + totalPrice.toFixed(2)}        
-          <Button
-            title={`${cartItems.length === 0 ? "Выберите кроссовки" : "Заказать"} `}
-            type={"checkout"}
-            disable={cartItems.length === 0 ? true : false}
-            onClick={onCheckout}
-          />
-          <Link to="/cart">
-            <Button> К корзине </Button>
+      <div className="shopping-cart">
+        {/* <div className="btn_back">
+          <Link to={`/`} style={{ textDecoration: 'none' }}>
+              Назад
           </Link>
-        </div>
-        <div className="shopping-cartBr">
+        </div> */}
+          <div class="title">
+          Корзина
+          </div>
           {cartItems.map((cartItems) => {
-              return (
-              <CardInBracket food = {cartItems} />
-              );
-            })}
+              return (<CardInBracket food = {cartItems} onAdd={onAdd} onRemove={onRemove} />);
+            })
+          }
         </div>
+        {cartItems.length !== 0 ? (<div className="invoice">
+          <button class="button-27" role="button" hidden>Оформить заказ</button>
+        </div>): null}
+        
       </>
-
     );
-  }
-  else{
-    return (
-      <div className="cart__container">
-        {cartItems.length === 0 ? "В корзине пусто " : "Сумма заказа: ₽" + totalPrice.toFixed(2)}        
-        <Button
-          title={`${cartItems.length === 0 ? "Выберите кроссовки" : "Оплатить"} `}
-          type={"checkout"}
-          disable={cartItems.length === 0 ? true : false}
-          onClick={onCheckout}
-        />
-      </div>
-    );
-  }
 }
 
 export default Basket;
