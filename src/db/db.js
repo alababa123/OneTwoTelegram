@@ -12,6 +12,6 @@ export function getData() {
     { title: "Adidas Yung 1", price: 5350, Image: AdidasYung1, id:1, sizes:[1,2,3,4]},
     { title: "Nike Air Force 1", price: 13999, Image: NikeAirForce1, id:2, sizes:[1,2,3,4] },
     { title: "Adidas Ozweego", price: 7550, Image: AdidasOzweegoTRGrey, id:3, sizes:[1,2,3,4] },
-    { title: "Adidas Ozweego PURE", price: 9999, Image: AdidasOzweegoPURE, id:4, sizes:[1,2,3,4] },
+    { title: "Adidas Ozweego PURE", price: 9999, Image: AdidasOzweegoPURE, id:4, sizes:[36,37,38,39,39.5] },
   ];
 }

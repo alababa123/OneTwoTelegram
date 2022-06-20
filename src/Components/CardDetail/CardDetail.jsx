@@ -15,8 +15,7 @@ function CardDetail({ food, onAdd, onRemove }) {
   const handleIncrement = () => {
     setCount(count + 1);
     onAdd(food[cur_id.id], currentSize);
-    console.log(currentSize)
-  };
+    };
 
   const handleDecrement = () => {
     setCount(count - 1);
@@ -25,32 +24,46 @@ function CardDetail({ food, onAdd, onRemove }) {
 
   const setSize = (title) => {
     setcurrentSize(title)
-    console.log(currentSize)  
   } 
 
   return (
     <>
     <div className="cardDetail">
-      <div className="column">
+      <div className="cardDetailTitle">
+        {title}
+      </div>
+      <div className="cardDetailPrice">
+        &nbsp;{price}₽&nbsp;
+      </div>
+    </div>
         <div className="image__containerDitail">
           <img src={Image} alt={title} />
         </div>
+        <div className="cardDescription">
+          <p>
+            <span className="card__discription">
+              Adidas
+            </span>
+          </p>
+
+          <p>
+            <div className="sizes-btn-container">
+              {sizes.map((size) => { return (<SizeButton title={size} Size={setSize} />) })}
+            </div>
+          </p>
+          
+          <div className="btnCart">
+            {currentSize !== 0 ?  
+            (<button className="btn-add" onClick={handleIncrement}>Добавить в корзину</button>) : 
+            (<button className="btn-add">Выберите размер</button>)
+            }
+              {count !== 0 ? (
+              <Button title={"-"} type={"remove"} onClick={handleDecrement} />
+              ) : (
+                ""
+              )}
+            </div>
       </div>
-      <div className="column">
-        <h2>{title} </h2>
-        <p><span className="card__discription">{"Здесь будет описание"}</span></p>
-        <p><div className="sizes-btn-container">
-          {sizes.map((size) => { return (<SizeButton title={size} Size={setSize} />) })}
-        </div></p>
-        <p>
-          <button className="btn-add" onClick={handleIncrement}>Добавить в корзину</button>
-          {count !== 0 ? (
-            <Button title={"-"} type={"remove"} onClick={handleDecrement} />
-          ) : (
-            ""
-          )}</p>
-      </div>
-    </div>
     </>
   );
 }

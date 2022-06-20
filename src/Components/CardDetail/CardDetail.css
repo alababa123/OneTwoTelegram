@@ -2,10 +2,34 @@
   box-sizing: border-box;
 }
 
+.image__containerDitail{
+  width: 100%;
+  background-size: cover;
+}
+.image__containerDitail img {
+  /* object-fit: contain; */
+  max-width:100%!important;
+  height:auto!important;
+  /* width: 50%; */
+}
+.cardDetail{
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.cardDetailPrice{
+  font-size: 10px;
+  font-weight: bold;
+}
+.cardDetailTitle{
+  font-size: 20px;
+  font-weight: bold;
+}
+.cardDescription{
 
+}
 .column {
   flex-direction: column;
-  display: flexbox;
   background-color:#bbb;
   float: left;
   width: 50%;
@@ -23,7 +47,19 @@
   margin-top: 8%;
 } */
 
+.sizes-btn-container{
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.btnCart{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+} 
 
 .btn-add {
   appearance: none;
@@ -49,7 +85,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 100%;
+  width: 300px;
   will-change: transform;
 }
 .insert{

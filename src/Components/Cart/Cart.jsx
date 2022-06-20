@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import CardInBracket from "../CardInBracket/CardInBracket";
  
 
-function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove }) {
+function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove, tele }) {
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
-  console.log()  
+  const Payment = () => {
+    console.log(JSON.stringify(cartItems))
+    tele.sendData(JSON.stringify(cartItems));
+  } 
   return (
       <>
       <div className="shopping-cart">
@@ -25,9 +28,8 @@ function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove }) {
           }
         </div>
         {cartItems.length !== 0 ? (<div className="invoice">
-          <button class="button-27" role="button" hidden>Оформить заказ</button>
+          <button class="button-27" role="button" onClick={Payment}>Оформить заказ</button>
         </div>): null}
-        
       </>
     );
 }

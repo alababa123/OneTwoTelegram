@@ -1,0 +1,15 @@
+.sizebin{
+    margin: 3px;
+    width: 45px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 3px;
+    background-color: white;
+    font-size: medium;
+    font-weight: 600;
+    border-color: black;
+}
+.sizebin:focus{
+    background-color: black;
+    color: white;
+}
