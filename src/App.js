@@ -22,25 +22,35 @@ function App() {
     tele.ready();
   });
 
-  const onAdd = (food) => {
+  const onAdd = (food, cursize) => {
     const exist = cartItems.find((x) => x.id === food.id);
-    if (exist) {
+    if (exist && exist.size === cursize) {
       setCartItems(
         cartItems.map((x) =>
           x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
         )
       );
+      console.log(cartItems)
     } else {
-      setCartItems([...cartItems, { ...food, quantity: 1 }]);
+      setCartItems([...cartItems, { ...food, size: cursize, quantity: 1 }]);
+      console.log(cartItems)
     }
     setcartCount(cartCount + 1)
     console.log(cartItems)
   };
 
-  const onRemove = (food) => {
-    const exist = cartItems.find((x) => x.id === food.id);
+  const onRemove = (food, cursize) => {
+    var exist = cartItems[0]
+    for (var i = 0; i < cartItems.length; i++){
+        if (cartItems[i].size === cursize && cartItems[i].id === food.id){
+          exist = cartItems[i]
+        }
+    }
+    console.log(exist)
+    // const exist = cartItems.find((x) => x.id === food.id && x.size === cursize);
     if (exist.quantity === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== food.id));
+      // console.log(cartItems.filter((x) => ((x.id !== food.id) && (x.size == cursize))))
+      setCartItems(cartItems.filter((x) => ((x !== exist))));
     } else {
       setCartItems(
         cartItems.map((x) =>

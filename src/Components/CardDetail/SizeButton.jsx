@@ -1,10 +1,6 @@
 import React from "react";
 
-const setSize = (title) => {
-    console.log(title)
-} 
-
-function SizeButton({ type, title, disable }) {
+function SizeButton({ type, title, disable, Size }) {
   return (
     <button
       className='sizebin'
@@ -12,7 +8,7 @@ function SizeButton({ type, title, disable }) {
       disabled={
           disable
     }
-      onClick={() => setSize(title)}
+      onClick={() => Size(title)}
     >
       {title}
     </button>

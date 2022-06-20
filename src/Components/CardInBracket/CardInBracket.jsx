@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function CardInBracket({ food, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
-  const { title, Image, price, id, quantity } = food;
+  const { title, Image, price, id, quantity, size } = food;
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -32,12 +32,13 @@ function CardInBracket({ food, onAdd, onRemove }) {
       <div class="description">
         <span>{title}</span>
         <span>Кол-во: {quantity}</span>
+        <span>Размер: {size}</span>
       </div>
    
       <div class="quantity">
-        <button class="plus-btn" type="button" name="button" onClick={handleIncrement}>
+        {/* <button class="plus-btn" type="button" name="button" onClick={handleIncrement}>
           +
-        </button>
+        </button> */}
         <button class="minus-btn" type="button" name="button" onClick={handleDecrement}>
           -
         </button>
