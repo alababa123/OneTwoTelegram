@@ -1,9 +1,11 @@
 import React from "react";
 import "./SizeButton.css"
-function SizeButton({ type, title, disable, Size }) {
+
+function SizeButton({ type, title, disable, Size, currentSize}) {
   return (
     <button
-      className='sizebin'
+      className={(currentSize === Number(title)) ? 'sizebin_foc' : 'sizebin_default'}
+      // className='sizebin_default'
       type="submit"
       disabled={
           disable

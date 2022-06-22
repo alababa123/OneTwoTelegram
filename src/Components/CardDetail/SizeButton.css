@@ -1,4 +1,4 @@
-.sizebin{
+.sizebin_default{
     margin: 3px;
     width: 45px;
     height: 30px;
@@ -9,7 +9,21 @@
     font-weight: 600;
     border-color: black;
 }
-.sizebin:focus{
+
+.sizebin_foc{
+    margin: 3px;
+    width: 45px;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 3px;
     background-color: black;
+    font-size: medium;
+    font-weight: 600;
+    border-color: black;
     color: white;
 }
+
+/* .sizebin:active{
+    background-color: red;
+    color: white;
+} */

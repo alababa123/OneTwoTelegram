@@ -48,7 +48,7 @@ function CardDetail({ food, onAdd, onRemove }) {
 
           <p>
             <div className="sizes-btn-container">
-              {sizes.map((size) => { return (<SizeButton title={size} Size={setSize} />) })}
+              {sizes.map((size) => { return (<SizeButton title={size} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
             </div>
           </p>
           
