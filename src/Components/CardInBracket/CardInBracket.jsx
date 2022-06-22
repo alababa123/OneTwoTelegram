@@ -18,33 +18,30 @@ function CardInBracket({ food, onAdd, onRemove }) {
 
   return ( 
     <>
-
-    <div class="item">
-      <div class="buttons">
-        <span class="delete-btn"></span>
-        <span class="like-btn"></span>
+    <div className="item">
+      <div className="buttons">
+        <span className="delete-btn"></span>
+        <span className="like-btn"></span>
       </div>
-   
-      <div class="image">
+      <Link to={`/store/${food.id}`} className="image">
         <img src={Image} alt="" />
-      </div>
-   
-      <div class="description">
+      </Link>
+      <Link to={`/store/${food.id}`} className="description">
         <span>{title}</span>
         <span>Кол-во: {quantity}</span>
         <span>Размер: {size}</span>
-      </div>
+      </Link>
    
-      <div class="quantity">
-        {/* <button class="plus-btn" type="button" name="button" onClick={handleIncrement}>
+      <div className="quantity">
+        {/* <button className="plus-btn" type="button" name="button" onClick={handleIncrement}>
           +
         </button> */}
-        <button class="minus-btn" type="button" name="button" onClick={handleDecrement}>
+        <button className="minus-btn" type="button" name="button" onClick={handleDecrement}>
           -
         </button>
       </div>
    
-      <div class="total-price">{price * quantity}₽</div>
+      <div className="total-price">{price * quantity}₽</div>
     </div>
   </>
   );

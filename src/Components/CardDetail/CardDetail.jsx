@@ -42,7 +42,7 @@ function CardDetail({ food, onAdd, onRemove }) {
         <div className="cardDescription">
           <p>
             <span className="card__discription">
-              Adidas
+              (описание)
             </span>
           </p>
           <div className="sizes-btn-container">

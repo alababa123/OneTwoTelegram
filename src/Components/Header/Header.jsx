@@ -21,7 +21,7 @@ function Header({ cartItems, onCheckout, isPayment, count }) {
     <Link to={`/cart`} style={{ textDecoration: 'none' }}> 
     <div className="cart__image">
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-        width="30px" height="30px"
+        width="50px" height="30px"
                      viewBox="0 0 64 64">
                 <text x="27px" y="30px" fontSize="15px" fontWeight="bold" strokeWidth="0.5" fill="black">{count}</text>  
                 <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
