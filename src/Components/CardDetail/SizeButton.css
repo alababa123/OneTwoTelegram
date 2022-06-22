@@ -8,6 +8,7 @@
     font-size: medium;
     font-weight: 600;
     border-color: black;
+    align-items: center;
 }
 
 .sizebin_foc{
@@ -21,6 +22,7 @@
     font-weight: 600;
     border-color: black;
     color: white;
+    align-items: center;
 }
 
 /* .sizebin:active{
