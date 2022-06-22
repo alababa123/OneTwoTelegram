@@ -45,13 +45,9 @@ function CardDetail({ food, onAdd, onRemove }) {
               Adidas
             </span>
           </p>
-
-          <p>
-            <div className="sizes-btn-container">
-              {sizes.map((size) => { return (<SizeButton title={size} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
-            </div>
-          </p>
-          
+          <div className="sizes-btn-container">
+            {sizes.map((size) => { return (<SizeButton key={size.toString()} title={size} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
+          </div>
           <div className="btnCart">
             {currentSize !== 0 ?  
             (<button className="btn-add" onClick={handleIncrement}>Добавить в корзину</button>) : 

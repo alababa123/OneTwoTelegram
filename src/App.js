@@ -12,7 +12,6 @@ const foods = getData();
 
 
 const tele = window.Telegram.WebApp;
-// console.log(foods)
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [display_invoice, invoice_state] = useState(false);
@@ -30,13 +29,10 @@ function App() {
           x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
         )
       );
-      console.log(cartItems)
     } else {
       setCartItems([...cartItems, { ...food, size: cursize, quantity: 1 }]);
-      console.log(cartItems)
     }
     setcartCount(cartCount + 1)
-    console.log(cartItems)
   };
 
   const onRemove = (food, cursize) => {
@@ -46,10 +42,7 @@ function App() {
           exist = cartItems[i]
         }
     }
-    console.log(exist)
-    // const exist = cartItems.find((x) => x.id === food.id && x.size === cursize);
     if (exist.quantity === 1) {
-      // console.log(cartItems.filter((x) => ((x.id !== food.id) && (x.size == cursize))))
       setCartItems(cartItems.filter((x) => ((x !== exist))));
     } else {
       setCartItems(
@@ -59,7 +52,6 @@ function App() {
       );
     }
     setcartCount(cartCount - 1)
-    console.log(cartCount)
   };
   
   const Payment = () => {
@@ -67,7 +59,6 @@ function App() {
   }
   const onCheckout = () => {
     invoice_state(true)
-    // tele.sendData(JSON.stringify(cartItems));
     tele.MainButton.text = 'Закрыть корзину';
     tele.MainButton.show();
     

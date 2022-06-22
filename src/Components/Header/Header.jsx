@@ -23,7 +23,7 @@ function Header({ cartItems, onCheckout, isPayment, count }) {
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
         width="30px" height="30px"
                      viewBox="0 0 64 64">
-                <text x="27px" y="30px" font-size="15px" font-weight="bold" stroke-width="0.5" fill="black">{count}</text>  
+                <text x="27px" y="30px" fontSize="15px" fontWeight="bold" strokeWidth="0.5" fill="black">{count}</text>  
                 <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
                 fill="#000000" stroke="none">
                 <path d="M30 625 c0 -4 10 -20 21 -37 16 -22 28 -74 49 -205 19 -120 33 -180

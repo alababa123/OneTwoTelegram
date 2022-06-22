@@ -8,7 +8,6 @@ import CardInBracket from "../CardInBracket/CardInBracket";
 function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove, tele }) {
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   const Payment = () => {
-    console.log(JSON.stringify(cartItems))
     tele.sendData(JSON.stringify(cartItems));
   } 
   return (
@@ -19,16 +18,16 @@ function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove, tele }) {
               Назад
           </Link>
         </div> */}
-          <div class="title">
+          <div className="title">
           Корзина
           </div>
           {cartItems.map((cartItems) => {
-              return (<CardInBracket food = {cartItems} onAdd={onAdd} onRemove={onRemove} />);
+              return (<CardInBracket key = {cartItems.id} food = {cartItems} onAdd={onAdd} onRemove={onRemove} />);
             })
           }
         </div>
         {cartItems.length !== 0 ? (<div className="invoice">
-          <button class="button-27" role="button" onClick={Payment}>Оформить заказ</button>
+          <button className="button-27" role="button" onClick={Payment}>Оформить заказ</button>
         </div>): null}
       </>
     );

@@ -8,30 +8,20 @@ const foods = getData();
 
 function Store({ food, onAdd, onRemove, cartItems }) {
     const [count, setCount] = useState(0);
-    const { title, Image, price, id } = food;
+    const { title, Image, price, id} = food;
 
     function inBracket(id) {
-        console.log(cartItems.lenght)
         if (cartItems.lenght == 0) {
-            console.log("000")
             return 0
         }
         else {
             for(var i = 0; i < cartItems.lenght; i++){
                 if (cartItems[i].id === id){
-                    console.log("222")
                     return cartItems[i].quantity
                 }
-                console.log("333")
             }
-        console.log("444")  
         return 0  
         }
-
-        // console.log(cartItems)
-        // for(var i = 0; i < 5; i++){
-        //     console.log(i)
-        // }
     }
 
     const handleIncrement = () => {
