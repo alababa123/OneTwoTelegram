@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 function Card({ countInBracket, food, onAdd, onRemove }) {
   const [count, setCount] = useState(countInBracket);
-  const { title, Image, price, id } = food;
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -17,18 +16,18 @@ function Card({ countInBracket, food, onAdd, onRemove }) {
   };
 
   return (
-    <Link to={`/store/${id}`} style={{ textDecoration: 'none' }}>  
+    <Link to={`/store/${food.id}`} style={{ textDecoration: 'none' }}>  
       <div className="cardItem">
           <div className="image__container">
-            <img src={Image} alt={title}>
+            <img src={food.Image} alt={food.title}>
             </img>
           </div>
 
           <h4 className="card__title">
-            {title}
+            {food.title}
             <br/>
             <div className="card__price">
-            &nbsp;₽ {price}&nbsp;
+            &nbsp;₽ {food.price}&nbsp;
           </div>
           </h4>
       </div> 

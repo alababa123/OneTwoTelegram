@@ -31,7 +31,6 @@ function App() {
           exist = cartItems[i]
         }
     }
-    console.log(exist)
     if (exist) {
       setCartItems(
         cartItems.map((x) =>

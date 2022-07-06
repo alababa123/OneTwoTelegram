@@ -40,7 +40,7 @@ function Store({ food, onAdd, onRemove, cartItems }) {
             <Carousel variant="dark" indicators={false} interval={null}>
                 {food.map((food) => {
                     return (
-                        <Carousel.Item>
+                        <Carousel.Item key={food.id}>
 
                             <img
                             className="d-block"
