@@ -2,13 +2,18 @@
   box-sizing: border-box;
 }
  
-.item {
-  padding: 20px 30px;
+.itemInCart {
+  /* background: #43484D; */
+  border: 1px solid;
+  margin: 5px;
+  /* padding: 0px 10px; */
   height: 120px;
   display: flex;
+  border-color: rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
  
-.item:nth-child(3) {
+.itemInCart:nth-child(3) {
   border-top:  1px solid #E1E8EE;
   border-bottom:  1px solid #E1E8EE;
 }
@@ -63,58 +68,45 @@
 }
  
 .description {
-  padding-top: 10px;
+  /* padding-top: 10px; */
+  display: flex;
+  justify-items: baseline;
   margin-right: 60px;
   width: 115px;
+  color: black;
+  font-family: 'Oxygen';
 }
  
-.description span {
-  display: block;
-  font-size: 15px;
-  color: #43484D;
-  font-weight: 400;
-}
  
-.description span:first-child {
-  margin-bottom: 5px;
-}
-.description span:last-child {
-  font-weight: 300;
-  margin-top: 8px;
-  color: #86939E;
-}
+
 .quantity {
-  padding-top: 20px;
-  margin-right: 60px;
-}
-.quantity input {
-  -webkit-appearance: none;
-  border: none;
-  text-align: center;
-  width: 32px;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
+  display: flex;
+  padding: 2px;
+  border: 1px solid;
+  justify-content: center;
+  align-items: center;
+  border-color: #D3CCD0;
+  font-family: 'Oxygen';
 }
  
 .minus-btn {
+  align-items: center;
+  line-height: normal;
   width: 30px;
   height: 30px;
-  background-color: #E1E8EE;
-  border-radius: 6px;
+  font-size: 1.5em;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 0px;
   border: none;
   cursor: pointer;
 }
-.minus-btn img {
-  margin-bottom: 3px;
+
+.minusBtnSect{
+  flex: 1;
 }
-.plus-btn img {
-  margin-top: 2px;
-}
- 
-button:focus,
-input:focus {
-  outline:0;
+.plusBtnSect{
+  flex: 1;
 }
 
 .total-price {
@@ -132,12 +124,6 @@ input:focus {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .image img {
-    /* object-fit: contain; */
-    max-width:100%!important;
-    height:auto!important;
-    /* width: 50%; */
-  }
   .image,
   .quantity,
   .description {
@@ -154,3 +140,23 @@ input:focus {
 a {
   text-decoration: none;
 }
+
+.cartImage{
+  width: 100%;
+  margin-left: 5px;
+  /* margin-top: 5px; */ 
+}
+
+.image img {
+  /* object-fit: contain; */
+  max-width:100%!important;
+  height:auto!important;
+  /* width: 50%; */
+}
+
+.sizeSect{
+  /* position: ; */
+  font-size: small;
+  font-family: "Jura";
+}
+

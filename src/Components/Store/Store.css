@@ -1,0 +1,51 @@
+.carouselItem{
+    display: flex;
+    /* margin-top: -2em; */
+    /* position: absolute; */
+    width: 100%;
+    height: 5em;
+    background-color: #949498;
+}
+
+.textInCarousel{
+    /* position: absolute; */
+    color: #ffff;
+    font-family: 'Oxygen';
+    margin-top: 1.2em;
+    margin-left: 0.5em;
+    /* margin-right: 50%; */
+    /* left: 3em; */
+}
+
+.buttonCarousel{
+    font-family: "Oxygen";
+    font-weight: 700;
+    width: 8em;
+    height: 3em;
+    color: white;
+    background: #020202;
+    border-radius: 10px;
+}
+
+.buttonCarouselSection{
+    /* position: absolute; */
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    margin-right: 2em;
+    margin-top: 1.2em;
+}
+
+.preItemsBlock{
+    width: 100%;
+    display: flex;
+    background: black;
+    color: white;
+    height: 3em;
+    font-size: 2em;
+    justify-content: center;
+}
+
+.textInBlock{
+    margin-top: 0.7em;
+}

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "./CardDetail.css"
 import SizeButton from "./SizeButton"
+import { Accordion, Carousel } from "react-bootstrap";
+
 
 function CardDetail({ food, onAdd, onRemove }) {
 
@@ -28,21 +30,53 @@ function CardDetail({ food, onAdd, onRemove }) {
 
   return (
     <>
-    <div className="cardDetail">
-      <div className="cardDetailTitle">
-        {title}
-      </div>
-      <div className="cardDetailPrice">
-        &nbsp;{price}₽&nbsp;
-      </div>
-    </div>
-        <div className="image__containerDitail">
-          <img src={Image} alt={title} />
+        <Carousel variant="dark" indicators={false} interval={null}>
+                        <Carousel.Item>
+                        <div className="image__containerDitail">
+                            <img
+                            className="d-block"
+                            width={'100%'}
+                            // height={'100%'}
+                            src={Image}
+                            alt="First slide"
+                            />
+                        </div>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                        <div className="image__containerDitail">
+                            <img
+                            className="d-block"
+                            width={'100%'}
+                            // height={'100%'}
+                            src={Image}
+                            alt="First slide"
+                            />
+                        </div>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                        <div className="image__containerDitail">
+                            <img
+                            className="d-block"
+                            width={'100%'}
+                            // height={'100%'}
+                            src={Image}
+                            alt="First slide"
+                            />
+                        </div>
+                        </Carousel.Item>
+        </Carousel>
+        <div className="cardDetail">
+              <div className="cardDetailTitle">
+                  {title}
+              </div>
+              <div className="cardDetailPrice">
+                  ₽{price}
+              </div>
         </div>
         <div className="cardDescription">
           <p>
-            <span className="card__discription">
-              (описание)
+            <span className="card__sizes">
+              Размеры
             </span>
           </p>
           <div className="sizes-btn-container">
@@ -50,7 +84,7 @@ function CardDetail({ food, onAdd, onRemove }) {
           </div>
           <div className="btnCart">
             {currentSize !== 0 ?  
-            (<button className="btn-add" onClick={handleIncrement}>Добавить в корзину</button>) : 
+            (<button className="btn-add" onClick={handleIncrement}>В корзину</button>) : 
             (<button className="btn-add">Выберите размер</button>)
             }
               {count !== 0 ? (
@@ -59,7 +93,28 @@ function CardDetail({ food, onAdd, onRemove }) {
                 ""
               )}
             </div>
-      </div>
+          </div>
+
+          <Accordion alwaysOpen style={{marginTop: '1em'}}>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>Описание</Accordion.Header>
+            <Accordion.Body>
+              Кроссовки 
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>Детали</Accordion.Header>
+            <Accordion.Body>
+              12134567екв
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>Условия доставки</Accordion.Header>
+            <Accordion.Body>
+              ствсйвтосэв
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
     </>
   );
 }

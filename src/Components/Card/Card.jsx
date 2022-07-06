@@ -18,15 +18,18 @@ function Card({ countInBracket, food, onAdd, onRemove }) {
 
   return (
     <Link to={`/store/${id}`} style={{ textDecoration: 'none' }}>  
-      <div className="card">
-          <span className="card__price">&nbsp;₽ {price}&nbsp;</span>
+      <div className="cardItem">
           <div className="image__container">
             <img src={Image} alt={title}>
             </img>
           </div>
+
           <h4 className="card__title">
             {title}
             <br/>
+            <div className="card__price">
+            &nbsp;₽ {price}&nbsp;
+          </div>
           </h4>
       </div> 
       </Link> 

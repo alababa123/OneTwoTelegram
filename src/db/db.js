@@ -1,10 +1,12 @@
   import Yeeze from "../images/AdidasYeezy.png"
 import AirForceNikeLowUv from "../images/AirForceNike1LowUV.png"
-import AdidasYung1 from "../images/AdidasYung1.png"
-import NikeAirForce1 from "../images/NikeAirForce1.png"
+import AdidasYung1 from "../images/AdidasYung1.webp"
+import NikeAirForce1 from "../images/NikeAirForce1.webp"
 import AdidasOzweegoTRGrey from "../images/AdidasOzweego.png"
 import AdidasOzweegoPURE from "../images/AdidasOzweegoPURE.png"
 import AirJordan1ElevateLow from "../images/AirJordan1.png"
+import AdidasOzelia from "../images/AdidasOzelia.webp"
+import AdidasYeezy700V3 from "../images/AdidasYeezy700V3.jpg"
 
 export function getData() {
   return [
@@ -13,5 +15,7 @@ export function getData() {
     { title: "Nike Air Force 1", price: 13999, Image: NikeAirForce1, id:2, sizes:[1,2,3,4] },
     { title: "Adidas Ozweego", price: 7550, Image: AdidasOzweegoTRGrey, id:3, sizes:[1,2,3,4] },
     { title: "Adidas Ozweego PURE", price: 9999, Image: AdidasOzweegoPURE, id:4, sizes:[36,37,38,39,39.5] },
+    { title: "Adidas Ozelia", price: 6800, Image: AdidasOzelia, id:5, sizes:[36,37,38,39,39.5] },
+    { title: "Adidas Yeezy 700 V3", price: 6800, Image: AdidasYeezy700V3, id:6, sizes:[36,37,38,39,39.5] }
   ];
 }

@@ -4,8 +4,10 @@ import Cart from "./Components/Cart/Cart";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
 import CardDetail from "./Components/CardDetail/CardDetail";
-import Store from './Components/Store/Stope'
+import Store from './Components/Store/Store'
 import Header from "./Components/Header/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from "react-bootstrap";
 
 const { getData } = require("./db/db");
 const foods = getData();

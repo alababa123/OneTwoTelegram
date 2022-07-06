@@ -18,17 +18,23 @@ function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove, tele }) {
               Назад
           </Link>
         </div> */}
-          <div className="title">
-          Корзина
-          </div>
+
           {cartItems.map((cartItems) => {
               return (<CardInBracket key={cartItems.id * cartItems.id + cartItems.size} food={cartItems} onAdd={onAdd} onRemove={onRemove} />);
             })
           }
         </div>
-        {cartItems.length !== 0 ? (<div className="invoice">
-          <button className="button-27" role="button" onClick={Payment}>Оформить заказ</button>
-        </div>): null}
+        {
+            cartItems.length !== 0 ? (
+              <>
+                <div className="totalPrice">
+                  Сумма: ₽{totalPrice}
+                </div>
+                <div className="invoice">
+                  <button className="button-27" role="button" onClick={Payment}>Оформить заказ</button>
+                </div>
+              </>): null
+        }
       </>
     );
 }
