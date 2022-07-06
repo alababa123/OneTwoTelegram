@@ -24,11 +24,18 @@ function App() {
   });
 
   const onAdd = (food, cursize) => {
-    const exist = cartItems.find((x) => x.id === food.id);
-    if (exist && exist.size === cursize) {
+    // const exist = cartItems.find((x) => x.id === food.id);
+    var exist = 0
+    for (var i = 0; i < cartItems.length; i++){
+        if (cartItems[i].size === cursize && cartItems[i].id === food.id){
+          exist = cartItems[i]
+        }
+    }
+    console.log(exist)
+    if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
+          (x.id === food.id && x.size === cursize) ? { ...exist, quantity: exist.quantity + 1 } : x
         )
       );
     } else {
@@ -49,7 +56,7 @@ function App() {
     } else {
       setCartItems(
         cartItems.map((x) =>
-          x.id === food.id ? { ...exist, quantity: exist.quantity - 1 } : x
+        (x.id === food.id && x.size === cursize) ? { ...exist, quantity: exist.quantity - 1 } : x
         )
       );
     }

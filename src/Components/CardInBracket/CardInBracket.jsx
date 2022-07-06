@@ -10,11 +10,13 @@ function CardInBracket({ food, onAdd, onRemove }) {
   const handleIncrement = () => {
     setCount(count + 1);
     onAdd(food, size);
+    console.log(size);
   };
 
   const handleDecrement = () => {
     setCount(count - 1);
     onRemove(food, size);
+    console.log(size);
   };
 
   return ( 
