@@ -12,7 +12,7 @@ function CardDetail({ food, onAdd, onRemove }) {
   const [currentSize, setcurrentSize] = useState(0)
   const [count, setCount] = useState(0);
   const cur_id = useParams();
-  const { title, Image, price, id, sizes } = food[cur_id.id];
+  const { id,title, Image, price, sizes } = food[cur_id.id];
   
   const handleIncrement = () => {
     setCount(count + 1);
