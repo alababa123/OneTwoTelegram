@@ -3,18 +3,18 @@ import "./CardInBracket.css";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
-function CardInBracket({ food, onAdd, onRemove }) {
+function CardInBracket({ sneaker, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
-  const { title, Image, price, id, quantity, size } = food;
+  const { title, Image, price, id, quantity, size } = sneaker;
 
   const handleIncrement = () => {
     setCount(count + 1);
-    onAdd(food, size);
+    onAdd(sneaker, size);
   };
 
   const handleDecrement = () => {
     setCount(count - 1);
-    onRemove(food, size);
+    onRemove(sneaker, size);
   };
 
   return ( 
@@ -25,7 +25,7 @@ function CardInBracket({ food, onAdd, onRemove }) {
         </div>
 
       <div className="description" >
-      <Link to={`/store/${food.id}`} style={{textDecoration: 'none', color: 'black' }}>
+      <Link to={`/store/${sneaker.id}`} style={{textDecoration: 'none', color: 'black' }}>
         {title}
         <br/>
         ₽{price * quantity}

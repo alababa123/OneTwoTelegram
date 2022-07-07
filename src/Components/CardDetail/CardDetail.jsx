@@ -7,29 +7,29 @@ import SizeButton from "./SizeButton"
 import { Accordion, Carousel } from "react-bootstrap";
 
 
-function CardDetail({ food, onAdd, onRemove }) {
+function CardDetail({ sneaker, onAdd, onRemove }) {
 
   const [currentSize, setcurrentSize] = useState(0)
   const [count, setCount] = useState(0);
   const cur_id = useParams();
 
-  let cur_food
-  for (let i in food){
-    if (food[i].id == cur_id.id){
-      cur_food = food[i]
+  let cur_sneaker
+  for (let i in sneaker){
+    if (sneaker[i].id == cur_id.id){
+      cur_sneaker = sneaker[i]
     }
   }
 
-  const { id, title, Image, price, sizes } = cur_food;
+  const { id, title, Image, price, sizes } = cur_sneaker;
   
   const handleIncrement = () => {
     setCount(count + 1);
-    onAdd(cur_food, currentSize);
+    onAdd(cur_sneaker, currentSize);
     };
 
   const handleDecrement = () => {
     setCount(count - 1);
-    onRemove(cur_food, currentSize);
+    onRemove(cur_sneaker, currentSize);
   };
 
   const setSize = (title) => {

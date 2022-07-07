@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "./Card.css";
 import Button from "../Button/Button";
-function Card({ food, onAdd, onRemove }) {
+function Card({ sneaker, onAdd, onRemove }) {
   const [count, setCount] = useState();
-  const { title, Image, price, id } = food;
+  const { title, Image, price, id } = sneaker;
 
   const handleIncrement = () => {
     setCount(count + 1);
-    onAdd(food);
+    onAdd(sneaker);
   };
   const handleDecrement = () => {
     setCount(count - 1);
-    onRemove(food);
+    onRemove(sneaker);
   };
 
   return (

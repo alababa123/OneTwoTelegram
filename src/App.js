@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from "react-bootstrap";
 
 const { getData } = require("./db/db");
-const foods = getData();
+const sneakers = getData();
 
 
 const tele = window.Telegram.WebApp;
@@ -23,30 +23,29 @@ function App() {
     tele.ready();
   });
 
-  const onAdd = (food, cursize) => {
-    // const exist = cartItems.find((x) => x.id === food.id);
+  const onAdd = (sneaker, cursize) => {
     var exist = 0
     for (var i = 0; i < cartItems.length; i++){
-        if (cartItems[i].size === cursize && cartItems[i].id === food.id){
+        if (cartItems[i].size === cursize && cartItems[i].id === sneaker.id){
           exist = cartItems[i]
         }
     }
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          (x.id === food.id && x.size === cursize) ? { ...exist, quantity: exist.quantity + 1 } : x
+          (x.id === sneaker.id && x.size === cursize) ? { ...exist, quantity: exist.quantity + 1 } : x
         )
       );
     } else {
-      setCartItems([...cartItems, { ...food, size: cursize, quantity: 1 }]);
+      setCartItems([...cartItems, { ...sneaker, size: cursize, quantity: 1 }]);
     }
     setcartCount(cartCount + 1)
   };
 
-  const onRemove = (food, cursize) => {
+  const onRemove = (sneaker, cursize) => {
     var exist = cartItems[0]
     for (var i = 0; i < cartItems.length; i++){
-        if (cartItems[i].size === cursize && cartItems[i].id === food.id){
+        if (cartItems[i].size === cursize && cartItems[i].id === sneaker.id){
           exist = cartItems[i]
         }
     }
@@ -55,7 +54,7 @@ function App() {
     } else {
       setCartItems(
         cartItems.map((x) =>
-        (x.id === food.id && x.size === cursize) ? { ...exist, quantity: exist.quantity - 1 } : x
+        (x.id === sneaker.id && x.size === cursize) ? { ...exist, quantity: exist.quantity - 1 } : x
         )
       );
     }
@@ -85,8 +84,8 @@ function App() {
     <BrowserRouter>
       <Header cartItems={cartItems} onCheckout={onCheckout} isPayment={false} count={cartCount}/>
       <Routes>
-        <Route path="/" element={<Store food={foods} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
-        <Route path="/store/:id" element={<CardDetail food={foods} onAdd={onAdd} onRemove={onRemove}/>}/>
+        <Route path="/" element={<Store sneaker={sneakers} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
+        <Route path="/store/:id" element={<CardDetail sneaker={sneakers} onAdd={onAdd} onRemove={onRemove}/>}/>
         <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false} onAdd={onAdd} onRemove={onRemove} tele={tele}/>}/>
       </Routes>
     </BrowserRouter>

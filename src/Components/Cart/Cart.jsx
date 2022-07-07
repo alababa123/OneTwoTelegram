@@ -20,7 +20,7 @@ function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove, tele }) {
         </div> */}
 
           {cartItems.map((cartItems) => {
-              return (<CardInBracket key={cartItems.id * cartItems.id + cartItems.size} food={cartItems} onAdd={onAdd} onRemove={onRemove} />);
+              return (<CardInBracket key={cartItems.id * cartItems.id + cartItems.size} sneaker={cartItems} onAdd={onAdd} onRemove={onRemove} />);
             })
           }
         </div>

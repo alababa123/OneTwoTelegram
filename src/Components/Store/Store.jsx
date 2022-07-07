@@ -6,11 +6,11 @@ import Card from "../Card/Card";
 import { Carousel } from "react-bootstrap";
 import "./Store.css"
 const { getData } = require("../../db/db");
-const foods = getData();
+const sneakers = getData();
 
-function Store({ food, onAdd, onRemove, cartItems }) {
+function Store({ sneaker, onAdd, onRemove, cartItems }) {
     const [count, setCount] = useState(0);
-    const { title, Image, price, id} = food;
+    const { title, Image, price, id} = sneaker;
 
     function inBracket(id) {
         if (cartItems.lenght == 0) {
@@ -28,34 +28,34 @@ function Store({ food, onAdd, onRemove, cartItems }) {
 
     const handleIncrement = () => {
         setCount(count + 1);
-        onAdd(food);
+        onAdd(sneaker);
     };
     const handleDecrement = () => {
         setCount(count - 1);
-        onRemove(food);
+        onRemove(sneaker);
     };
     return (
 
         <>
             <Carousel variant="dark" indicators={false} interval={null}>
-                {food.map((food) => {
+                {sneaker.map((sneaker) => {
                     return (
-                        <Carousel.Item key={food.id}>
+                        <Carousel.Item key={sneaker.id}>
 
                             <img
                             className="d-block"
                             width={'100%'}
                             // height={'100%'}
-                            src={food['Image']}
+                            src={sneaker['Image']}
 
                             alt="First slide"
                             />
                             <div className="carouselItem">
                             
                             <div className="textInCarousel">
-                            {food['title']}
+                            {sneaker['title']}
                             <br/>
-                            ₽{food['price']}   
+                            ₽{sneaker['price']}   
                             </div>
                             <div className="buttonCarouselSection">
                                 <button className='buttonCarousel'>Купить</button>
@@ -73,9 +73,9 @@ function Store({ food, onAdd, onRemove, cartItems }) {
                 </div>
             </div>
             <div className="cards__container">
-                {food.map((food) => {
+                {sneaker.map((sneaker) => {
                     return (
-                    <Card countInBracket={inBracket(food.id)} food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
+                    <Card countInBracket={inBracket(sneaker.id)} sneaker={sneaker} key={sneaker.id} onAdd={onAdd} onRemove={onRemove} />
                     );
                 })}
             </div>
