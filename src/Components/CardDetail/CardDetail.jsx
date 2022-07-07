@@ -20,7 +20,7 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
     }
   }
 
-  const { id, title, Image, price, sizes } = cur_sneaker;
+  const { id, title, Image, Images, price, sizes, description } = cur_sneaker;
   
   const handleIncrement = () => {
     setCount(count + 1);
@@ -39,39 +39,23 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
   return (
     <>
         <Carousel variant="dark" indicators={false} interval={null}>
-                        <Carousel.Item>
+          {Images.map((img) => {
+                      return (
+                        <Carousel.Item key={img}>
                         <div className="image__containerDitail">
                             <img
                             className="d-block"
                             width={'100%'}
                             // height={'100%'}
-                            src={Image}
+                            src={img}
                             alt="First slide"
                             />
                         </div>
                         </Carousel.Item>
-                        <Carousel.Item>
-                        <div className="image__containerDitail">
-                            <img
-                            className="d-block"
-                            width={'100%'}
-                            // height={'100%'}
-                            src={Image}
-                            alt="First slide"
-                            />
-                        </div>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                        <div className="image__containerDitail">
-                            <img
-                            className="d-block"
-                            width={'100%'}
-                            // height={'100%'}
-                            src={Image}
-                            alt="First slide"
-                            />
-                        </div>
-                        </Carousel.Item>
+                      );
+                      }
+                      )
+                    }
         </Carousel>
         <div className="cardDetail">
               <div className="cardDetailTitle">
@@ -107,7 +91,7 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
           <Accordion.Item eventKey="0">
             <Accordion.Header>Описание</Accordion.Header>
             <Accordion.Body>
-              Кроссовки 
+              {description}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
