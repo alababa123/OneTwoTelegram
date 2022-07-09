@@ -16,10 +16,10 @@ function parse_sizes(sizes) {
 }
 
 export function getData() {
-  let r = httpGet('http://194.58.107.7:8000/api/sneakers/')
+  let r = httpGet('http://localhost:8000/api/sneakers/')
   let sneakers = []
   for (let i in r) {
-    let sneaker_sizes = parse_sizes(r[i]['sneaker_sizes'])
+    let sneaker_sizes = parse_sizes(r[i]['sizes'])
     if (sneaker_sizes.length) {
       let sneaker_images = []
       for (let j = 1; j < 7; j++) {
@@ -40,6 +40,5 @@ export function getData() {
       })
     }
   }
-  console.log(sneakers)
   return sneakers
 }
