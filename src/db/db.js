@@ -6,17 +6,18 @@ function httpGet(theUrl) {
 }
 
 function parse_sizes(sizes) {
+  console.log(sizes)
   let out = []
   for (let i in sizes) {
     if (sizes[i]) {
-      out.push(parseInt(i))
+      out.push(parseInt(i.slice(5))/10)
     }
   }
   return out
 }
 
 export function getData() {
-  let r = httpGet('http://localhost:8000/api/sneakers/')
+  let r = httpGet('http://188.93.211.150:8000/api/sneakers/')
   let sneakers = []
   for (let i in r) {
     let sneaker_sizes = parse_sizes(r[i]['sizes'])
