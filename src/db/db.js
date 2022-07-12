@@ -17,7 +17,7 @@ function parse_sizes(sizes) {
 }
 
 export function getData() {
-  let r = httpGet('http://188.93.211.150:8000/api/sneakers/')
+  let r = httpGet('https://onetwosneaker.ru/api/sneakers/')
   let sneakers = []
   for (let i in r) {
     let sneaker_sizes = parse_sizes(r[i]['sizes'])

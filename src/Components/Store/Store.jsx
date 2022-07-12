@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Store/Store.css";
-import Button from "../Button/Button";
-import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Store.css"
-const { getData } = require("../../db/db");
-const sneakers = getData();
 
 function Store({ sneaker, onAdd, onRemove, cartItems }) {
-    const [count, setCount] = useState(0);
-    const { title, Image, price, id} = sneaker;
 
     function inBracket(id) {
-        if (cartItems.lenght == 0) {
+        if (cartItems.lenght === 0) {
             return 0
         }
         else {
@@ -25,15 +20,6 @@ function Store({ sneaker, onAdd, onRemove, cartItems }) {
         return 0  
         }
     }
-
-    const handleIncrement = () => {
-        setCount(count + 1);
-        onAdd(sneaker);
-    };
-    const handleDecrement = () => {
-        setCount(count - 1);
-        onRemove(sneaker);
-    };
     return (
 
         <>
@@ -58,7 +44,9 @@ function Store({ sneaker, onAdd, onRemove, cartItems }) {
                             ₽{sneaker['price']}   
                             </div>
                             <div className="buttonCarouselSection">
-                                <button className='buttonCarousel'>Купить</button>
+                                <Link to={`/store/${sneaker.id}`}>
+                                    <button className='buttonCarousel'>Купить</button>
+                                </Link>    
                             </div>
                         </div>
                         </Carousel.Item>

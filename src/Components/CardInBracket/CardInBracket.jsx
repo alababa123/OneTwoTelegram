@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./CardInBracket.css";
-import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
 function CardInBracket({ sneaker, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
-  const { title, Image, price, id, quantity, size } = sneaker;
+  const { title, Image, price, quantity, size } = sneaker;
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -20,21 +19,20 @@ function CardInBracket({ sneaker, onAdd, onRemove }) {
   return ( 
     <>
     <div className="itemInCart">
-        <div className="cartImage">
-          <img src={Image} alt="" style={{width: '90%', height: '90%'}}/>
-        </div>
-
+      <div className="cartImage">
+        <img src={Image} alt="" style={{width: '90%', height: '90%'}}/>
+      </div>
       <div className="description" >
-      <Link to={`/store/${sneaker.id}`} style={{textDecoration: 'none', color: 'black' }}>
-        {title}
-        <br/>
-        ₽{price * quantity}
-        {/* <span>Кол-во: {quantity}</span>
-        */}
-        <div className="sizeSect">
-             {size} размер
-        </div>
-      </Link>
+        <Link to={`/store/${sneaker.id}`} style={{textDecoration: 'none', color: 'black' }}>
+          {title}
+          <br/>
+          ₽{price * quantity}
+          {/* <span>Кол-во: {quantity}</span>
+          */}
+          <div className="sizeSect">
+              {size} размер
+          </div>
+        </Link>
       </div>
       
       <div className="quantity">

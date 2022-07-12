@@ -82,3 +82,12 @@
   margin-right: 30px;
   margin-bottom: 20px;
 }
+
+.cartempty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin: 100px 15px;
+
+}

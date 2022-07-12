@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "./CardDetail.css"
 import SizeButton from "./SizeButton"

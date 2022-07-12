@@ -7,7 +7,6 @@ import CardDetail from "./Components/CardDetail/CardDetail";
 import Store from './Components/Store/Store'
 import Header from "./Components/Header/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Carousel } from "react-bootstrap";
 
 const { getData } = require("./db/db");
 const sneakers = getData();
@@ -61,9 +60,6 @@ function App() {
     setcartCount(cartCount - 1)
   };
   
-  const Payment = () => {
-    tele.sendData(JSON.stringify(cartItems));
-  }
   const onCheckout = () => {
     invoice_state(true)
     tele.MainButton.text = 'Закрыть корзину';
