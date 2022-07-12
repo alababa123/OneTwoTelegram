@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./CardDetail.css"
 import SizeButton from "./SizeButton"
 import { Accordion, Carousel } from "react-bootstrap";
+import cogoToast from 'cogo-toast';
 
 
 function CardDetail({ sneaker, onAdd, onRemove }) {
@@ -24,6 +25,7 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
   const handleIncrement = () => {
     setCount(count + 1);
     onAdd(cur_sneaker, currentSize);
+    cogoToast.success('This is a success message!');
     };
 
   const handleDecrement = () => {
@@ -78,11 +80,6 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
             (<button className="btn-add" onClick={handleIncrement}>В корзину</button>) : 
             (<button className="btn-add">Выберите размер</button>)
             }
-              {count !== 0 ? (
-              <Button title={"-"} type={"remove"} onClick={handleDecrement} />
-              ) : (
-                ""
-              )}
             </div>
           </div>
 
