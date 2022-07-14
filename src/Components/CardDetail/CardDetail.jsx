@@ -25,7 +25,7 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
   const handleIncrement = () => {
     setCount(count + 1);
     onAdd(cur_sneaker, currentSize);
-    cogoToast.success('This is a success message!');
+    cogoToast.success('Товар добавлен в корзину!');
     };
 
   const handleDecrement = () => {

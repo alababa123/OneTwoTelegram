@@ -6,7 +6,6 @@ function httpGet(theUrl) {
 }
 
 function parse_sizes(sizes) {
-  console.log(sizes)
   let out = []
   for (let i in sizes) {
     if (sizes[i]) {
