@@ -1,3 +1,7 @@
+.form-control{
+  margin: 5px
+}
+
 .header__container {
     display: flex;
     justify-content: space-between;

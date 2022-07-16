@@ -5,23 +5,24 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, Container,  NavDropdown, Offcanvas, Form, FormControl} from "react-bootstrap";
 import Cart from "./Cart.svg"
 
-function Header({ cartItems, onCheckout, isPayment, count }) {
+function Header({ cartItems, onCheckout, isPayment, count } ) {
+
     return (
     <>
     <Navbar fixed='top' expand='sm' style={{backgroundColor: "#D9D9D9", justifyContent: "unset"}}>
         <Container style={{justifyContent: 'unset'}}>
         <Navbar.Toggle style={{border: 0}}/>
-        <Link to='/' className="NoneDecor">
-                <Navbar.Brand style={{fontFamily: "Oxanium"}}>
-                    OneTwoSneaker
-                </Navbar.Brand>
-        </Link>
+          <Link to='/' className="NoneDecor">
+                  <Navbar.Brand style={{fontFamily: "Oxanium"}}>
+                      OneTwoSneaker
+                  </Navbar.Brand>
+          </Link>
         
-        <div className="cart__image" style={{}}>
-            <Link to={`/cart`} style={{ textDecoration: 'none' }}> 
-                <img src={Cart}></img>
-            </Link>
-        </div>
+          <div className="cart__image" style={{}}>
+              <Link to={`/cart`} style={{ textDecoration: 'none' }}> 
+                  <img src={Cart}></img>
+              </Link>
+          </div>
         <Navbar.Offcanvas>
         
           <Offcanvas.Header closeButton>
@@ -33,6 +34,10 @@ function Header({ cartItems, onCheckout, isPayment, count }) {
           </Offcanvas.Header>
         
           <Offcanvas.Body>
+            {/* <label for="customRange2" className="form-label">Минимальная цена</label>
+            <input type="range" className="form-range" min="3000" max="40000" id="customRange2" value="0"></input>
+            <label for="customRange2" className="form-label">Максимальная цена</label>
+            <input type="range" className="form-range" min="3000" max="40000" id="customRange2"></input> */}
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#action2">Link</Nav.Link>

@@ -9,7 +9,13 @@ import Header from "./Components/Header/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const { getData } = require("./db/db");
-const sneakers = getData();
+
+var minprice = ""
+var maxprice = ""
+var gender = ""
+var brand = []
+var group = []
+var sizes = []
 
 
 const tele = window.Telegram.WebApp;
@@ -18,9 +24,21 @@ function App() {
   const [display_invoice, invoice_state] = useState(false);
   const [cartCount, setcartCount] = useState(0)
 
+
   useEffect(() => {
     tele.ready();
   });
+
+  function edit_params_requests(new_brand, new_minprice, new_maxprice, new_gender, new_sizes, new_group) {
+    brand = new_brand
+    minprice = new_minprice
+    maxprice = new_maxprice
+    gender = new_gender
+    sizes = new_sizes
+    group = new_group
+    console.log(minprice, maxprice)
+    var sneakers = getData(minprice, maxprice)
+  }
 
   const onAdd = (sneaker, cursize) => {
     var exist = 0
@@ -75,13 +93,15 @@ function App() {
     }
 
 });
+
+
   return (
     <>
     <BrowserRouter>
       <Header cartItems={cartItems} onCheckout={onCheckout} isPayment={false} count={cartCount}/>
       <Routes>
-        <Route path="/" element={<Store sneaker={sneakers} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
-        <Route path="/store/:id" element={<CardDetail sneaker={sneakers} onAdd={onAdd} onRemove={onRemove}/>}/>
+        <Route path="/" element={<Store edit_filters={edit_params_requests} sneaker={getData(minprice, maxprice)} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
+        <Route path="/store/:id" element={<CardDetail sneaker={getData(minprice, maxprice)} onAdd={onAdd} onRemove={onRemove}/>}/>
         <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false} onAdd={onAdd} onRemove={onRemove} tele={tele}/>}/>
       </Routes>
     </BrowserRouter>

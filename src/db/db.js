@@ -15,8 +15,20 @@ function parse_sizes(sizes) {
   return out
 }
 
-export function getData() {
-  let r = httpGet('https://onetwosneaker.ru/api/sneakers/')
+export function getData(min_price, max_price, gender) {
+  let url = "https://onetwosneaker.ru/api/sneakers/?"
+  console.log(min_price, max_price, gender)
+  if (min_price !== "") {
+    url = url + `&min=${min_price}`
+  }
+  if (max_price !== "") {
+    url = url + `&max=${max_price}`
+  }
+  if (gender !== "") {
+    url = url + `gender=${gender}`
+  }
+  console.log(url)
+  let r = httpGet(url)
   let sneakers = []
   for (let i in r) {
     let sneaker_sizes = parse_sizes(r[i]['sizes'])
@@ -40,5 +52,6 @@ export function getData() {
       })
     }
   }
+  console.log(sneakers)
   return sneakers
 }
