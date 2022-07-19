@@ -5,6 +5,7 @@ import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Store.css"
 import { useState } from "react";
+import FilterModal from "../Modal/FilterModal"
 
 const { getData } = require("../../db/db");
 
@@ -101,24 +102,7 @@ function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems }) {
                     Товары
                 </div>
             </div>
-
-
-            <input className="form-control" type="text" placeholder="Минимальная цена" aria-label="default input example" id="min_price" />
-            <input className="form-control" type="text" placeholder="Максимальная цена" aria-label="default input example" id="max_price" />
-            
-            <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="checkM" value="option1"/>
-            <label className="form-check-label" htmlFor="checkM">Men</label>
-            </div>
-
-            <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="checkW" value="option2"/>
-            <label className="form-check-label" htmlFor="checkW">Women</label>
-            </div>
-            <div>
-            <button type="button" className="btn btn-primary" onClick={filters}>Применить</button>
-            <button type="button" className="btn btn-primary" onClick={cancel_filters}>Сбросить</button>
-            </div>
+            <FilterModal></FilterModal>
             <div className="cards__container">
                 {sneakers.map((sneakers) => {
                     return (

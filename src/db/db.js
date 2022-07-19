@@ -25,7 +25,7 @@ export function getData(min_price, max_price, gender) {
     url = url + `&max=${max_price}`
   }
   if (gender !== "") {
-    url = url + `gender=${gender}`
+    url = url + `&gender=${gender}`
   }
   console.log(url)
   let r = httpGet(url)

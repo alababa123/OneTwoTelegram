@@ -11,7 +11,7 @@ function Header({ cartItems, onCheckout, isPayment, count } ) {
     <>
     <Navbar fixed='top' expand='sm' style={{backgroundColor: "#D9D9D9", justifyContent: "unset"}}>
         <Container style={{justifyContent: 'unset'}}>
-        <Navbar.Toggle style={{border: 0}}/>
+        {/* <Navbar.Toggle style={{border: 0}}/> */}
           <Link to='/' className="NoneDecor">
                   <Navbar.Brand style={{fontFamily: "Oxanium"}}>
                       OneTwoSneaker
@@ -23,49 +23,7 @@ function Header({ cartItems, onCheckout, isPayment, count } ) {
                   <img src={Cart}></img>
               </Link>
           </div>
-        <Navbar.Offcanvas>
         
-          <Offcanvas.Header closeButton>
-        
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-false`}>
-              Меню
-            </Offcanvas.Title>
-        
-          </Offcanvas.Header>
-        
-          <Offcanvas.Body>
-            {/* <label for="customRange2" className="form-label">Минимальная цена</label>
-            <input type="range" className="form-range" min="3000" max="40000" id="customRange2" value="0"></input>
-            <label for="customRange2" className="form-label">Максимальная цена</label>
-            <input type="range" className="form-range" min="3000" max="40000" id="customRange2"></input> */}
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown
-                title="Dropdown"
-                id={`offcanvasNavbarDropdown-expand-false`}
-                >
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-          </Offcanvas.Body>
-            </Navbar.Offcanvas>
         </Container>
     </Navbar>
     <div style={{marginBottom: '50px', width: '100%', position : "relative"}}></div>
