@@ -8,9 +8,9 @@ import "./FilterSize.css"
 
 const { getFilter } = require("../../db/getFilter");
 
-function FilterModal ({onAddFilter, onRemoveFilter, filter}){
+function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
   let filters = getFilter()
-
+  console.log(filter)
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const [currentSize, setcurrentSize] = useState([])
@@ -34,7 +34,7 @@ function FilterModal ({onAddFilter, onRemoveFilter, filter}){
       
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Сортировать по</Modal.Title>
+          <Modal.Title>Фильтровать по</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Accordion alwaysOpen style={{marginTop: '1em'}}>
@@ -47,13 +47,13 @@ function FilterModal ({onAddFilter, onRemoveFilter, filter}){
           <Accordion.Item eventKey="1">
             <Accordion.Header>Бренду</Accordion.Header>
             <Accordion.Body>
-              {filters['brands'].map((item) => { return (<FilterCheckBox type={'brands'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0}/>) })}
+              {filters['brands'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'brand'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
             <Accordion.Header>Цвету</Accordion.Header>
             <Accordion.Body>
-              {filters['colors'].map((item) => { return (<FilterCheckBox type={'colors'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
+              {filters['colors'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'color'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">

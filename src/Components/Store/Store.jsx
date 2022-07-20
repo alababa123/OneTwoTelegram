@@ -7,39 +7,27 @@ import "./Store.css"
 import { useState } from "react";
 import FilterModal from "../Modal/FilterModal"
 
-const { getData } = require("../../db/db");
+// const { getData } = require("../../db/db");
 
-function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems, onAddFilter, onRemoveFilter, filter }) {
+function Store({ edit_filters, getData, onAdd, onRemove, cartItems, onAddFilter, onRemoveFilter, filter }) {
 
-    const [sneakers, setSneakers] = useState(sneaker)
+    let sneakers = getData(filter);
 
-    function filters() {
-        let min_price = document.getElementById("min_price").value
-        let max_price = document.getElementById("max_price").value
-        let m = document.getElementById("checkM").checked
-        let w = document.getElementById("checkW").checked
-        let gender = ""
-        if (m == 1 && w == 1) {
-            gender = "U"
+    // const [sneakers, setSneakers] = useState(sneaker)
+
+    const [reloadState, setReloadState] = useState(0)
+
+    const Reload = () => {
+        
+        if (reloadState == 1) {
+            setReloadState(0);
         }
-        else if (m == 1) {
-            gender = "M"    
+        else{
+            setReloadState(1);
         }
-        else if (w == 1) {
-            gender = "W"
-        }
-        else {
-            gender = ""
-        }
-        setSneakers(getData(min_price, max_price, gender))
     }
 
-    function cancel_filters() {
-        let min_price = ""
-        let max_price = ""
-        let gender = ""
-        setSneakers(getData(min_price, max_price, gender))
-    }
+    // console.log(sneaker, filter);
 
     function inBracket(id) {
         if (cartItems.lenght === 0) {
@@ -54,7 +42,7 @@ function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems, onAddFilter,
         return 0  
         }
     }
-    // console.log(sneakers)
+
     return (
 
         <>
@@ -95,7 +83,7 @@ function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems, onAddFilter,
                     Товары
                 </div>
             </div>
-            <FilterModal onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter}></FilterModal>
+            <FilterModal Reload={Reload} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter}></FilterModal>
             <div className="cards__container">
                 {sneakers.map((sneakers) => {
                     return (

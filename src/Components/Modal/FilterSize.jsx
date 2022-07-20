@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./FilterSize.css"
 
 function SizeButton({ type, title, disable, Size, onAddFilter, onRemoveFilter, filter}) {
+  
   const [kostil, setKostil] = useState(0)
   
   const clickHandler = () => {
@@ -15,7 +16,7 @@ function SizeButton({ type, title, disable, Size, onAddFilter, onRemoveFilter, f
         onAddFilter(type, title);
     }
   }
-  console.log(type)
+
   return (
     <button
       className={(filter[type].includes(title) == true) ? 'sizebin_foc' : 'sizebin_default'}

@@ -23,18 +23,18 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [display_invoice, invoice_state] = useState(false);
   const [cartCount, setcartCount] = useState(0)
-  
+
+
+
   let filters = {
-    'brands': [],
+    'brand': [],
     'min_price': 0,
-    'max_price': 0,
+    'max_price': 100000000000,
     'sizes': [],
-    'genders': [],
-    'colors': [],
+    'gender': '',
+    'color': [],
   }
   const [filter, setFilter] = useState(filters);
-  
-  console.log("filter:" , filter)
   
   useEffect(() => {
     tele.ready();
@@ -50,7 +50,6 @@ function App() {
       setFilter(
         filter
       )
-      console.log(1)
     }
   };
   
@@ -62,24 +61,9 @@ function App() {
       setFilter(
         filter
       )
-      console.log(2)
-
     }
-    // console.log(filter)
 
   }
-
-  // function edit_store(filters) {
-  //   brand = new_brand
-  //   minprice = new_minprice
-  //   maxprice = new_maxprice
-  //   gender = new_gender
-  //   sizes = new_sizes
-  //   group = new_group
-  //   console.log(minprice, maxprice)
-  //   var sneakers = getData(minprice, maxprice)
-  // }
-
   
   const onAdd = (sneaker, cursize) => {
     var exist = 0
@@ -141,8 +125,8 @@ function App() {
     <BrowserRouter>
       <Header cartItems={cartItems} onCheckout={onCheckout} isPayment={false} count={cartCount}/>
       <Routes>
-        <Route path="/" element={<Store onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter} sneaker={getData(minprice, maxprice)} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
-        <Route path="/store/:id" element={<CardDetail sneaker={getData(minprice, maxprice)} onAdd={onAdd} onRemove={onRemove}/>}/>
+        <Route path="/" element={<Store onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter} getData={getData} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
+        <Route path="/store/:id" element={<CardDetail sneaker={getData(filter)} onAdd={onAdd} onRemove={onRemove}/>}/>
         <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false} onAdd={onAdd} onRemove={onRemove} tele={tele}/>}/>
       </Routes>
     </BrowserRouter>

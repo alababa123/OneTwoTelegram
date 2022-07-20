@@ -1,14 +1,11 @@
 function Api(theUrl, method, body) {
-    console.log(theUrl, body, method)
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open(method, theUrl, false); // false for synchronous request
     
     if (body === ""){
-      console.log(1)
       xmlHttp.send(null);
     } 
     else{
-      console.log(2)
       xmlHttp.send(JSON.stringify(body));
     }
     return JSON.parse(xmlHttp.responseText);

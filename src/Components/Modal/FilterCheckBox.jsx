@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import "./FilterCheckBox.css";
 
-function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, filter}){
+function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, filter, Reload}){
     
-    const [kostil, setKostil] = useState(0)
 
+
+    const [kostil, setKostil] = useState(0)
     const clickHandler = () => {
-        console.log(filter)
+        
         if (filter[type].indexOf(title) != -1){
-            setKostil(0)
             onRemoveFilter(type, title);
         }
         else{
-            setKostil(1)
             onAddFilter(type, title);
         }
+        Reload();
     }
     
     return (

@@ -1,16 +1,13 @@
 function Api(theUrl, method, body) {
-  console.log(theUrl, body, method)
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open(method, theUrl, false); // false for synchronous request
-  
+  xmlHttp.open(method, theUrl, false); 
   if (body === ""){
-    console.log(1)
     xmlHttp.send(null);
   } 
   else{
-    console.log(2)
     xmlHttp.send(JSON.stringify(body));
   }
+  console.log(xmlHttp.responseText);
   return JSON.parse(xmlHttp.responseText);
 }
 
@@ -24,11 +21,11 @@ function parse_sizes(sizes) {
   return out
 }
 
-export function getData(min_price, max_price, gender, brand, color, size) {
+export function getData(filter) {
   
   let url = "https://onetwosneaker.ru/api/sneakers/filter";
   
-  let sneaker = Api(url, "POST", {})
+  let sneaker = Api(url, "POST", filter)
 
 
   let sneakers = []
