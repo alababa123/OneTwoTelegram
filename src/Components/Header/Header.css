@@ -20,7 +20,7 @@
 .cart__image{
   flex: 1;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
   
   .shopping-cartBr {

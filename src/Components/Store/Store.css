@@ -31,7 +31,7 @@
     /* position: absolute; */
     display: flex;
     flex: 1;
-    justify-content: end;
+    justify-content: flex-end;
     margin-right: 2em;
     margin-top: 1.2em;
 }

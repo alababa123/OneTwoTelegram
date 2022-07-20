@@ -11,8 +11,6 @@ const { getFilter } = require("../../db/getFilter");
 
 function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
 
-  let sorts = ['Сначала дешевле', 'Сначала дороже']
-
   let filters = getFilter()
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -38,7 +36,7 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
         <button className="btnFilter" onClick={() => handleShow(true)}>
           Фильтры
           &nbsp;&nbsp;
-          <img src="https://www.adidas.de/glass/react/85fe1cf/assets/img/icon-test-filters.svg"></img>
+          <img src="https://www.adidas.de/glass/react/85fe1cf/assets/img/icon-test-filters.svg" alt="img-filters"></img>
         </button>
       </div>
       
