@@ -38,6 +38,7 @@ export function getFilter() {
     return {
         'brands' : filterBrands,
         'colors' : filterColor,
-        'sizes' : filterSizes
+        'sizes' : filterSizes, 
+        'gender' : ['M', 'W', 'U']
     }
   }

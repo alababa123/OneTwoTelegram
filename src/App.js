@@ -43,7 +43,17 @@ function App() {
 
   const onAddFilter = (filterName, value) => {
     console.log(filterName, value);
-    if (!filter[filterName].includes(value)){
+
+    if (filterName === "gender") {
+      
+      filter[filterName] = value
+
+      setFilter(
+        filter
+      )
+    }
+
+    else if (!filter[filterName].includes(value)){
 
       filter[filterName].push(value)
 
@@ -54,6 +64,14 @@ function App() {
   };
   
   const onRemoveFilter = (filterName, value) => {
+    if (filterName === "gender") {
+      
+      filter[filterName] = ''
+
+      setFilter(
+        filter
+      )
+    }
     if (filter[filterName].includes(value)){
 
       filter[filterName].splice(filter[filterName].indexOf(value), 1)

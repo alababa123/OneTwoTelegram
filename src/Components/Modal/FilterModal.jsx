@@ -67,7 +67,7 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
           <Accordion.Item eventKey="4">
             <Accordion.Header>Полу</Accordion.Header>
             <Accordion.Body>
-              ПолПолПол
+              {filters['gender'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'gender'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0}/>) })}
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
