@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import "./FilterModal.css";
 import { Modal } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
 import { Accordion } from "react-bootstrap";
-function FilterModal (){
+import SizeButton from "./FilterSize"
+import FilterCheckBox from "./FilterCheckBox";
+import "./FilterSize.css"
 
-  const values = [true];
+const { getFilter } = require("../../db/getFilter");
+
+function FilterModal ({onAddFilter, onRemoveFilter, filter}){
+  let filters = getFilter()
+
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
-
+  const [currentSize, setcurrentSize] = useState([])
+  const setSize = (title) => {
+    setcurrentSize(title)
+  } 
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
   }
-
+  
   return (
     <>
       <div className="btnFilterSect">
@@ -37,21 +45,23 @@ function FilterModal (){
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Бренд</Accordion.Header>
+            <Accordion.Header>Бренду</Accordion.Header>
             <Accordion.Body>
-              БрендыБрендыБренды
+              {filters['brands'].map((item) => { return (<FilterCheckBox type={'brands'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>Цвет</Accordion.Header>
+            <Accordion.Header>Цвету</Accordion.Header>
             <Accordion.Body>
-              ЦветЦветЦвет
+              {filters['colors'].map((item) => { return (<FilterCheckBox type={'colors'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
-            <Accordion.Header>Размеры</Accordion.Header>
+            <Accordion.Header>Размеру</Accordion.Header>
             <Accordion.Body>
-              РазмерыРазмерыРазмеры
+              <div className="sizes-btn-container">
+                {filters['sizes'].map((item) => { return (<SizeButton type={'sizes'} key={(item).toString()} title={item/10} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter}/>) })}
+              </div>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="4">

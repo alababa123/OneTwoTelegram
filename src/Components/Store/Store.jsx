@@ -9,16 +9,9 @@ import FilterModal from "../Modal/FilterModal"
 
 const { getData } = require("../../db/db");
 
-function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems }) {
+function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems, onAddFilter, onRemoveFilter, filter }) {
 
     const [sneakers, setSneakers] = useState(sneaker)
-
-    // const [minprice, setMinprice] = useState("")
-    // const [maxprice, setMaxprice] = useState("")
-    // // const [brand, setBrand] = useState("")
-    // // const [gender, setGender] = useState("")
-    // // const [sizes, setSizes] = useState([])
-    // // const [groups, setgroups] = useState([])
 
     function filters() {
         let min_price = document.getElementById("min_price").value
@@ -61,7 +54,7 @@ function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems }) {
         return 0  
         }
     }
-    console.log(sneakers)
+    // console.log(sneakers)
     return (
 
         <>
@@ -102,7 +95,7 @@ function Store({ edit_filters, sneaker, onAdd, onRemove, cartItems }) {
                     Товары
                 </div>
             </div>
-            <FilterModal></FilterModal>
+            <FilterModal onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter}></FilterModal>
             <div className="cards__container">
                 {sneakers.map((sneakers) => {
                     return (
