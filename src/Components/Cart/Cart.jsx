@@ -4,7 +4,6 @@ import CardInBracket from "../CardInBracket/CardInBracket";
  
 
 function Basket({ cartItems, onCheckout, isPayment, onAdd, onRemove, tele }) {
-  console.log(cartItems.lenght)
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   const Payment = () => {
     tele.sendData(JSON.stringify(cartItems));

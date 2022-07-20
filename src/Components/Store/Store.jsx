@@ -27,7 +27,6 @@ function Store({ edit_filters, getData, onAdd, onRemove, cartItems, onAddFilter,
         }
     }
 
-    // console.log(sneaker, filter);
 
     function inBracket(id) {
         if (cartItems.lenght === 0) {

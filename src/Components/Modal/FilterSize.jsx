@@ -11,7 +11,6 @@ function SizeButton({ type, title, disable, onAddFilter, onRemoveFilter, filter,
     else{
         onAddFilter(type, title);
     }
-    console.log(filter)
     Reload();
   }
 

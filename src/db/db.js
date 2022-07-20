@@ -7,7 +7,6 @@ function Api(theUrl, method, body) {
   else{
     xmlHttp.send(JSON.stringify(body));
   }
-  console.log(xmlHttp.responseText);
   return JSON.parse(xmlHttp.responseText);
 }
 

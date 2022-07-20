@@ -36,7 +36,6 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
   const setSize = (title) => {
     setcurrentSize(title)
   } 
-  console.log(sizes);
 
   return (
     <>

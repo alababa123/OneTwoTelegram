@@ -4,13 +4,13 @@ import { Modal } from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
 import SizeButton from "./FilterSize"
 import FilterCheckBox from "./FilterCheckBox";
+import PriceSlider from "./PriceSlider";
 import "./FilterSize.css"
 
 const { getFilter } = require("../../db/getFilter");
 
 function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
   let filters = getFilter()
-  console.log(filter)
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
   const [currentSize, setcurrentSize] = useState([])
@@ -20,6 +20,12 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
+  }
+
+  function ChangePriceFilter(min_price, max_price) {
+    onAddFilter('min_price', min_price);
+    onAddFilter('max_price', max_price);
+    Reload();
   }
   
   return (
@@ -41,7 +47,11 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
           <Accordion.Item eventKey="0">
             <Accordion.Header>Цене</Accordion.Header>
             <Accordion.Body>
-              Ценаценацена
+            <PriceSlider
+              min={0}
+              max={100000}
+              onChange={({ min, max }) => ChangePriceFilter(min, max)}
+            />
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">

@@ -42,9 +42,8 @@ function App() {
 
 
   const onAddFilter = (filterName, value) => {
-    console.log(filterName, value);
 
-    if (filterName === "gender") {
+    if (filterName === "gender" || filterName === "min_price" || filterName === "max_price") {
       
       filter[filterName] = value
 
@@ -64,7 +63,7 @@ function App() {
   };
   
   const onRemoveFilter = (filterName, value) => {
-    if (filterName === "gender") {
+    if (filterName === "gender" || filterName === "min_price" || filterName === "max_price") {
       
       filter[filterName] = ''
 
