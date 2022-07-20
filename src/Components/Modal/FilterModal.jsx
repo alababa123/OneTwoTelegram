@@ -10,6 +10,9 @@ import "./FilterSize.css"
 const { getFilter } = require("../../db/getFilter");
 
 function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
+
+  let sorts = ['Сначала дешевле', 'Сначала дороже']
+
   let filters = getFilter()
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -23,6 +26,7 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
   }
 
   function ChangePriceFilter(min_price, max_price) {
+    console.log(min_price, max_price)
     onAddFilter('min_price', min_price);
     onAddFilter('max_price', max_price);
     Reload();
@@ -32,7 +36,7 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
     <>
       <div className="btnFilterSect">
         <button className="btnFilter" onClick={() => handleShow(true)}>
-          Сортировка товаров
+          Фильтры
           &nbsp;&nbsp;
           <img src="https://www.adidas.de/glass/react/85fe1cf/assets/img/icon-test-filters.svg"></img>
         </button>
@@ -57,13 +61,13 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
           <Accordion.Item eventKey="1">
             <Accordion.Header>Бренду</Accordion.Header>
             <Accordion.Body>
-              {filters['brands'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'brand'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0}/>) })}
+              {filters['brands'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'brand'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0} write={item}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
             <Accordion.Header>Цвету</Accordion.Header>
             <Accordion.Body>
-              {filters['colors'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'color'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} Size={setSize} currentSize={currentSize ? currentSize : 0}/>) })}
+              {filters['colors'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'color'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} Size={setSize} currentSize={currentSize ? currentSize : 0} write={item}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
@@ -77,7 +81,13 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
           <Accordion.Item eventKey="4">
             <Accordion.Header>Полу</Accordion.Header>
             <Accordion.Body>
-              {filters['gender'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'gender'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0}/>) })}
+              {filters['gender'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'gender'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item[0]).toString()} title={item[0]} currentSize={currentSize ? currentSize : 0} write={item[1]}/>)})}
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="5">
+            <Accordion.Header>Сортировка</Accordion.Header>
+            <Accordion.Body>
+              {filters['sort'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'sort'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={item} title={item[0]} currentSize={currentSize ? currentSize : 0} write={item[1]}/>) })}
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>

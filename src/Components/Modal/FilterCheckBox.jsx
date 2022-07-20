@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./FilterCheckBox.css";
 
-function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, filter, Reload}){
+function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, filter, Reload, write}){
     
     const clickHandler = () => {
         
-        if (filter[type].indexOf(title) != -1){
+        if (filter[type].indexOf(title) != -1){ 
             onRemoveFilter(type, title);
         }
         else{
             onAddFilter(type, title);
+            console.log(type, title);
         }
         Reload();
     }
@@ -24,7 +25,7 @@ function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, fil
             }
           onClick= {() => clickHandler()}
         >
-          {title}
+          {write}
         </button>
         </>
     );

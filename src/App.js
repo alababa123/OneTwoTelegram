@@ -33,6 +33,7 @@ function App() {
     'sizes': [],
     'gender': '',
     'color': [],
+    'sort': '',
   }
   const [filter, setFilter] = useState(filters);
   
@@ -43,8 +44,8 @@ function App() {
 
   const onAddFilter = (filterName, value) => {
 
-    if (filterName === "gender" || filterName === "min_price" || filterName === "max_price") {
-      
+    if (filterName === "gender" || filterName === "min_price" || filterName === "max_price" || filterName === "sort") {
+
       filter[filterName] = value
 
       setFilter(
@@ -63,7 +64,7 @@ function App() {
   };
   
   const onRemoveFilter = (filterName, value) => {
-    if (filterName === "gender" || filterName === "min_price" || filterName === "max_price") {
+    if (filterName === "gender" || filterName === "min_price" || filterName === "max_price" || filterName === "sort") {
       
       filter[filterName] = ''
 
