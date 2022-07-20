@@ -3,9 +3,6 @@ import "./FilterCheckBox.css";
 
 function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, filter, Reload}){
     
-
-
-    const [kostil, setKostil] = useState(0)
     const clickHandler = () => {
         
         if (filter[type].indexOf(title) != -1){

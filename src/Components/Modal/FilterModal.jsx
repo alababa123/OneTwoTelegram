@@ -60,7 +60,7 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
             <Accordion.Header>Размеру</Accordion.Header>
             <Accordion.Body>
               <div className="sizes-btn-container">
-                {filters['sizes'].map((item) => { return (<SizeButton type={'sizes'} key={(item).toString()} title={item/10} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter}/>) })}
+                {filters['sizes'].map((item) => { return (<SizeButton Reload={Reload} type={'sizes'} key={(item).toString()} title={item} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter}/>) })}
               </div>
             </Accordion.Body>
           </Accordion.Item>

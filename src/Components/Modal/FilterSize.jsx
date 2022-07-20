@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import "./FilterSize.css"
 
-function SizeButton({ type, title, disable, Size, onAddFilter, onRemoveFilter, filter}) {
+function SizeButton({ type, title, disable, onAddFilter, onRemoveFilter, filter, Reload}) {
   
-  const [kostil, setKostil] = useState(0)
   
   const clickHandler = () => {
-    console.log(filter)
     if (filter[type].indexOf(title) != -1){
-        setKostil(0)
         onRemoveFilter(type, title);
     }
     else{
-        setKostil(1)
         onAddFilter(type, title);
     }
+    console.log(filter)
+    Reload();
   }
 
   return (
@@ -27,7 +25,7 @@ function SizeButton({ type, title, disable, Size, onAddFilter, onRemoveFilter, f
     }
       onClick={() => clickHandler()}
     >
-      {title}
+      {title / 10}
     </button>
   );
 }
