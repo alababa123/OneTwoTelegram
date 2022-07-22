@@ -23,7 +23,8 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [display_invoice, invoice_state] = useState(false);
   const [cartCount, setcartCount] = useState(0)
-
+  const [showCarousel, setShowCarousel] = useState(true)
+  const [reloadState, setReloadState] = useState(0)
 
 
   let filters = {
@@ -83,6 +84,23 @@ function App() {
 
   }
   
+  const Reload = () => {    
+    console.log('перезагружаю')
+    if (reloadState == 1) {
+        setReloadState(0);
+    }
+    else{
+        setReloadState(1);
+    }
+}
+
+  const onClearFilter = () => {
+    setFilter(filters)
+    setShowCarousel(true);
+    console.log('Обнулилось')
+    Reload();
+  }
+  
   const onAdd = (sneaker, cursize) => {
     var exist = 0
     for (var i = 0; i < cartItems.length; i++){
@@ -127,7 +145,6 @@ function App() {
     tele.MainButton.show();
     
   };
-
   window.Telegram.WebApp.onEvent('mainButtonClicked', function(){
     if (tele.MainButton.text = 'Закрыть корзину'){
       invoice_state(false)
@@ -143,7 +160,7 @@ function App() {
     <BrowserRouter>
       <Header cartItems={cartItems} onCheckout={onCheckout} isPayment={false} count={cartCount}/>
       <Routes>
-        <Route path="/" element={<Store onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter} getData={getData} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
+        <Route path="/" element={<Store onClearFilter={onClearFilter} showCarousel={showCarousel} setShowCarousel={setShowCarousel} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter} getData={getData} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}/>}/>
         <Route path="/store/:id" element={<CardDetail sneaker={getData(filter)} onAdd={onAdd} onRemove={onRemove}/>}/>
         <Route path="/cart" element={<Cart cartItems={cartItems} onCheckout={onCheckout} isPayment={false} onAdd={onAdd} onRemove={onRemove} tele={tele}/>}/>
       </Routes>

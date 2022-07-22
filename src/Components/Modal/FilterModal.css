@@ -12,3 +12,27 @@
     font-size: 1em;
     
 }
+
+.existFilterBtn{
+    background-color: #f5f6f6;
+    color: black;
+    padding: 2px;
+    border: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.existFilterSect{
+    display: flex;
+    flex-wrap: wrap;
+    color: black;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.existingFilter{
+    margin-left: 10px;
+}

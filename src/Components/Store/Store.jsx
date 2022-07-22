@@ -6,18 +6,36 @@ import { Link } from "react-router-dom";
 import "./Store.css"
 import { useState } from "react";
 import FilterModal from "../Modal/FilterModal"
-
 // const { getData } = require("../../db/db");
 
-function Store({ edit_filters, getData, onAdd, onRemove, cartItems, onAddFilter, onRemoveFilter, filter }) {
+function Store({ getData, onAdd, onRemove, cartItems, onAddFilter, onRemoveFilter, filter, showCarousel, setShowCarousel, onClearFilter }) {
+
+
+    const filters = {
+        'brand': [],
+        'min_price': 0,
+        'max_price': 100000000000,
+        'sizes': [],
+        'gender': '',
+        'color': [],
+        'sort': '',
+    }
+
+
 
     let sneakers = getData(filter);
-
-    // const [sneakers, setSneakers] = useState(sneaker)
 
     const [reloadState, setReloadState] = useState(0)
 
     const Reload = () => {
+        for (let i in filter){
+            if (JSON.stringify(filter[i]) != JSON.stringify(filters[i])){
+                console.log(i, filter[i])
+                setShowCarousel(false);
+                break;
+            }
+            setShowCarousel(true);
+        }
         
         if (reloadState == 1) {
             setReloadState(0);
@@ -26,7 +44,6 @@ function Store({ edit_filters, getData, onAdd, onRemove, cartItems, onAddFilter,
             setReloadState(1);
         }
     }
-
 
     function inBracket(id) {
         if (cartItems.lenght === 0) {
@@ -45,6 +62,8 @@ function Store({ edit_filters, getData, onAdd, onRemove, cartItems, onAddFilter,
     return (
 
         <>
+        {showCarousel == true ? (
+            <>
             <Carousel variant="dark" indicators={false} interval={null}>
                 {sneakers.map((sneakers) => {
                     return (
@@ -76,13 +95,21 @@ function Store({ edit_filters, getData, onAdd, onRemove, cartItems, onAddFilter,
                     }
                     )
                 }
-                </Carousel>
+            </Carousel>
             <div className="preItemsBlock">
                 <div className="textInBlock">
                     Товары
                 </div>
             </div>
-            <FilterModal Reload={Reload} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter}></FilterModal>
+            </>
+            ): (
+            <>
+            </>)}
+            <FilterModal showCarousel={showCarousel} Reload={Reload} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} filter={filter}></FilterModal>
+            {showCarousel == false ? (
+                <button className="clearFilterButton" onClick={onClearFilter}>Сбросить фильтры</button>
+
+            ) : ("")}
             <div className="cards__container">
                 {sneakers.map((sneakers) => {
                     return (

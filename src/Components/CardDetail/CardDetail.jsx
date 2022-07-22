@@ -20,7 +20,7 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
     }
   }
 
-  const { id, title, Image, Images, price, sizes, description } = cur_sneaker;
+  const { id, title, Image, Images, price, sizes, description, composition,color, gender, producing_country } = cur_sneaker;
   
   const handleIncrement = () => {
     setCount(count + 1);
@@ -87,21 +87,27 @@ function CardDetail({ sneaker, onAdd, onRemove }) {
           <Accordion.Item eventKey="0">
             <Accordion.Header>Описание</Accordion.Header>
             <Accordion.Body>
+            Кроссовки: {gender == 'M' ? 
+                      'Мужские' 
+                      : 
+                      gender == 'U' ? ('Унисекс') :('Женские')} <br/>
               {description}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>Детали</Accordion.Header>
             <Accordion.Body>
-              12134567екв
+              Цвет: {color}<br/>
+              Материалы: {composition}<br/>
+              Страна производитель: {producing_country}
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="2">
+          {/* <Accordion.Item eventKey="2">
             <Accordion.Header>Условия доставки</Accordion.Header>
             <Accordion.Body>
               ствсйвтосэв
             </Accordion.Body>
-          </Accordion.Item>
+          </Accordion.Item> */}
         </Accordion>
     </>
   );

@@ -10,7 +10,6 @@ function FilterCheckBox({ type, title, disable, onAddFilter, onRemoveFilter, fil
         }
         else{
             onAddFilter(type, title);
-            console.log(type, title);
         }
         Reload();
     }

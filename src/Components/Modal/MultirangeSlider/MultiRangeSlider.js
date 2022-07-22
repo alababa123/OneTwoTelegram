@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import "./PriceSlider.css";
+import "./MultiRangeSlider.css";
 
-const PriceSlider = ({ min, max, onChange }) => {
+const MultiRangeSlider = ({ min, max, onChange }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(min);
@@ -79,10 +79,10 @@ const PriceSlider = ({ min, max, onChange }) => {
   );
 };
 
-PriceSlider.propTypes = {
+MultiRangeSlider.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
-export default PriceSlider;
+export default MultiRangeSlider;

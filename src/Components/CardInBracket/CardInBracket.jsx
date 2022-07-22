@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 function CardInBracket({ sneaker, onAdd, onRemove }) {
   const [count, setCount] = useState(0);
   const { title, Image, price, quantity, size } = sneaker;
-
   const handleIncrement = () => {
     setCount(count + 1);
     onAdd(sneaker, size);

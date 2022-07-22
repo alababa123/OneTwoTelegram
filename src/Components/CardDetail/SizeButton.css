@@ -8,8 +8,12 @@
     font-size: medium;
     font-weight: 600;
     /* border-color: black; */
-    align-items: center;
     color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 .sizebin_foc{
@@ -23,7 +27,11 @@
     font-weight: 600;
     border-color: black;
     color: white;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 /* .sizebin:active{

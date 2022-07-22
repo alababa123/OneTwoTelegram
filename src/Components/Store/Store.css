@@ -49,3 +49,11 @@
 .textInBlock{
     margin-top: 0.7em;
 }
+
+.clearFilterButton{
+    width: 100%;
+    background-color: white;
+    color: #949498;
+    border: 0px;
+    text-decoration: underline;
+}

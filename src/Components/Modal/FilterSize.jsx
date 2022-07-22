@@ -17,7 +17,6 @@ function SizeButton({ type, title, disable, onAddFilter, onRemoveFilter, filter,
   return (
     <button
       className={(filter[type].includes(title) == true) ? 'sizebin_foc' : 'sizebin_default'}
-      // className='sizebin_default'
       type="submit"
       disabled={
           disable

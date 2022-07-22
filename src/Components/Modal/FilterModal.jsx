@@ -4,12 +4,12 @@ import { Modal } from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
 import SizeButton from "./FilterSize"
 import FilterCheckBox from "./FilterCheckBox";
-import PriceSlider from "./PriceSlider";
 import "./FilterSize.css"
-
+import galochka from "./galo4ka.png"
+import MultiRangeSlider from "./MultirangeSlider/MultiRangeSlider";
+import CrossHair from "./cross.svg";
 const { getFilter } = require("../../db/getFilter");
-
-function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
+function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter, showCarousel}){
 
   let filters = getFilter()
   const [fullscreen, setFullscreen] = useState(true);
@@ -23,18 +23,31 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
     setShow(true);
   }
 
-  function ChangePriceFilter(min_price, max_price) {
-    console.log(min_price, max_price)
+  function ChangeMinPriceFilter(min_price) {
     onAddFilter('min_price', min_price);
+    Reload();
+  }
+
+  function ChangeMaxPriceFilter(max_price) {
     onAddFilter('max_price', max_price);
     Reload();
   }
-  
+  const ClickHandler = (type, title) => {
+    console.log('bebra')
+    if (filter[type].indexOf(title) != -1){ 
+      console.log('lebra')
+      onRemoveFilter(type, title);
+    }
+    console.log(filter)
+    Reload();
+  }
   return (
     <>
       <div className="btnFilterSect">
         <button className="btnFilter" onClick={() => handleShow(true)}>
+          <span style={{'text-decoration': 'none', 'color': 'black'}}>
           Фильтры
+          </span>
           &nbsp;&nbsp;
           <img src="https://www.adidas.de/glass/react/85fe1cf/assets/img/icon-test-filters.svg" alt="img-filters"></img>
         </button>
@@ -44,32 +57,122 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
         <Modal.Header closeButton>
           <Modal.Title>Фильтровать по</Modal.Title>
         </Modal.Header>
+        {showCarousel == false ? (
+        <div className="existingFilter">
+          <span style={{'font-weight': '40'}}>
+            Применяемые фильтры
+          </span>
+                <div className="existFilterSect">
+                {
+                  filter['brand'].map((item) => {return (
+                    <>
+                    &nbsp;
+                    <button className="existFilterBtn" onClick={() => ClickHandler('brand', item)}>
+                      <img src={CrossHair}/>
+                      &nbsp;
+                      {item}
+                      </button>
+                    </>
+                    )
+                    }
+                  )
+              }
+              {
+                filter['color'].map((item) => {return (
+                  <>
+                  &nbsp;
+                  <button className="existFilterBtn" onClick={() => ClickHandler('brand', item)}>
+                    <img src={CrossHair}/>
+                    &nbsp;
+                    {item}
+                    </button>
+                  </>
+                  )
+                  }
+                )
+              }
+              {filter['sizes'].map((item) => {return (
+                    <>
+                    &nbsp;
+                    <button className="existFilterBtn" onClick={() => ClickHandler('brand', item)}>
+                      <img src={CrossHair}/>
+                      &nbsp;
+                      {item / 10}
+                      </button>
+                    </>
+                    )
+                    }
+                  )
+              }
+              {
+                    <>
+                    {filter['gender'] != '' ? (
+                      <>
+                    &nbsp;
+                    <button className="existFilterBtn" onClick={() => ClickHandler('gender', filter['gender'])}>
+                      <img src={CrossHair}/>
+                      &nbsp;
+                      {
+                      filter['gender'] == 'M' ? 
+                      'Мужские' 
+                      : 
+                      filter['gender'] == 'U' ? ('Унисекс') :('Женские')
+                      }
+                      </button>
+                      </>
+                      ): ''}
+                    </>
+              }
+              {
+                    <>
+                    {filter['sort'] != '' ? (
+                          <>
+                    &nbsp;
+                    <button className="existFilterBtn" onClick={() => ClickHandler('sort', filter['sort'])}>
+                      <img src={CrossHair}/>
+                      &nbsp;
+                      {filter['sort'] == 'increase' ? 'Дешевле' : 'Дороже'}
+                      </button>
+                      </>
+                      ) : ''}
+                    </>
+                    
+              }
+        </div>
+        </div>
+      ): ("")}
         <Modal.Body>
         <Accordion alwaysOpen style={{marginTop: '1em'}}>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Цене</Accordion.Header>
+          {/* <Accordion.Item eventKey="0">
+            <Accordion.Header>Цена</Accordion.Header>
             <Accordion.Body>
-            <PriceSlider
-              min={0}
-              max={100000}
-              onChange={({ min, max }) => ChangePriceFilter(min, max)}
-            />
+              <>
+              <input placeholder="От" onChange={e => ChangeMinPriceFilter(e.target.value)}/>
+              <input placeholder="До" onChange={e => ChangeMaxPriceFilter(e.target.value)}/>
+
+            </>
             </Accordion.Body>
-          </Accordion.Item>
+          </Accordion.Item> */}
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Бренду</Accordion.Header>
+            <Accordion.Header>
+              Бренд
+            </Accordion.Header>
             <Accordion.Body>
               {filters['brands'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'brand'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} currentSize={currentSize ? currentSize : 0} write={item}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>Цвету</Accordion.Header>
+            <Accordion.Header>
+              Цвет
+            </Accordion.Header>
             <Accordion.Body>
               {filters['colors'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'color'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item).toString()} title={item} Size={setSize} currentSize={currentSize ? currentSize : 0} write={item}/>) })}
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
-            <Accordion.Header>Размеру</Accordion.Header>
+            <Accordion.Header>
+              Размер
+            </Accordion.Header>
             <Accordion.Body>
               <div className="sizes-btn-container">
                 {filters['sizes'].map((item) => { return (<SizeButton Reload={Reload} type={'sizes'} key={(item).toString()} title={item} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter}/>) })}
@@ -77,7 +180,7 @@ function FilterModal ({Reload, onAddFilter, onRemoveFilter, filter}){
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="4">
-            <Accordion.Header>Полу</Accordion.Header>
+            <Accordion.Header>Пол</Accordion.Header>
             <Accordion.Body>
               {filters['gender'].map((item) => { return (<FilterCheckBox Reload={Reload} type={'gender'} filter={filter} onAddFilter={onAddFilter} onRemoveFilter={onRemoveFilter} key={(item[0]).toString()} title={item[0]} currentSize={currentSize ? currentSize : 0} write={item[1]}/>)})}
             </Accordion.Body>

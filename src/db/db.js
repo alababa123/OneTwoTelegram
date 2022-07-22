@@ -7,6 +7,7 @@ function Api(theUrl, method, body) {
   else{
     xmlHttp.send(JSON.stringify(body));
   }
+  console.log(JSON.parse(xmlHttp.responseText))
   return JSON.parse(xmlHttp.responseText);
 }
 
@@ -47,6 +48,9 @@ export function getData(filter) {
         brand: sneaker[i]['brand'],
         description: sneaker[i]['description'],
         sizes: sneaker_sizes,
+        composition: sneaker[i]['composition'],
+        color: sneaker[i]['color'],
+        producing_country: sneaker[i]['producing_country'],
       })
     }
   }

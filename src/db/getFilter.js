@@ -39,7 +39,7 @@ export function getFilter() {
         'brands' : filterBrands,
         'colors' : filterColor,
         'sizes' : filterSizes, 
-        'gender' : [['M', 'Мужское'], ['W', 'Женское'], ['U', 'Унисекс']],
+        'gender' : [['M', 'Мужские'], ['W', 'Женские'], ['U', 'Унисекс']],
         'sort' : [['increase', 'Сначала дешевле'], ['decrease', 'Сначала дороже']],
     }
   }
